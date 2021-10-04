@@ -1,0 +1,113 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, zero_one_loss
+import matplotlib.pyplot as plt
+
+# Must declare data_dir as the directory of training and test files
+data_dir = "./dataset/"
+
+train_data = data_dir + "kddcup.data_10_percent_corrected"
+
+names = ["duration","protocol_type","service","flag","src_bytes",
+    "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
+    "logged_in","num_compromised","root_shell","su_attempted","num_root",
+    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
+    "is_host_login","is_guest_login","count","srv_count","serror_rate",
+    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
+    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
+    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_src_port_rate",
+    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
+    "dst_host_rerror_rate","dst_host_srv_rerror_rate","label"]
+
+df = pd.read_csv(train_data, names=names)
+print(df.describe())
+
+print(df.shape)
+print(df['label'].value_counts())
+
+
+# Divide by class
+df_normal = df[df['label'] == 'normal.']
+df_neptune = df[df['label'] == 'neptune.']
+df_back = df[df['label'] == 'back.']
+df_teardrop = df[df['label'] == 'teardrop.']
+df_satan = df[df['label'] == 'satan.']
+df_warezclient = df[df['label'] == 'warezclient.']
+df_ipsweep = df[df['label'] == 'ipsweep.']
+df_smurf = df[df['label'] == 'smurf.']
+df_portsweep = df[df['label'] == 'portsweep.']
+df_pod = df[df['label'] == 'pod.']
+df_nmap = df[df['label'] == 'nmap.']
+df_guess_passwd = df[df['label'] == 'guess_passwd.']
+df_buffer_overflow = df[df['label'] == 'buffer_overflow.']
+df_warezmaster = df[df['label'] == 'warezmaster.']
+df_land = df[df['label'] == 'land.']
+df_imap = df[df['label'] == 'imap.']
+df_rootkit = df[df['label'] == 'rootkit.']
+df_loadmodule = df[df['label'] == 'loadmodule.']
+df_ftp_write = df[df['label'] == 'ftp_write.']
+df_multihop = df[df['label'] == 'multihop.']
+df_phf = df[df['label'] == 'phf.']
+df_perl = df[df['label'] == 'perl.']
+df_spy = df[df['label'] == 'spy.']
+
+df = pd.concat([df_normal, df_neptune, df_smurf], axis=0)
+
+df.drop('num_outbound_cmds', axis=1, inplace=True)
+df.drop('is_host_login', axis=1, inplace=True)
+df['protocol_type'] = df['protocol_type'].astype('category')
+df['service'] = df['service'].astype('category')
+df['flag'] = df['flag'].astype('category')
+df['label'] = df['label'].astype('category')
+cat_columns = df.select_dtypes(['category']).columns
+df[cat_columns] = df[cat_columns].apply(lambda x: x.cat.codes)
+
+data = df.values
+Y = data[:,39]
+X = data[:,0:39]
+Y = Y.reshape(-1, 1)
+
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+sScaler = StandardScaler()
+rescaleX = sScaler.fit_transform(X)
+pca = PCA(n_components=2)
+rescaleX = pca.fit_transform(rescaleX)
+rescaleX = np.append(rescaleX, Y, axis=1)
+principalDf = pd.DataFrame(data = rescaleX, columns = ['principal component 1', 'principal component 2', 'label'])
+principalDf.head()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1622/1690920269.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mneighbors[0m [0;32mimport[0m [0mKNeighborsClassifier[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mmetrics[0m [0;32mimport[0m [0mconfusion_matrix[0m[0;34m,[0m [0mzero_one_loss[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'pandas'
+ModuleNotFoundError: No module named 'pandas'
+
