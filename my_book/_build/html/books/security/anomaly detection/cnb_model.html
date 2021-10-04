@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Space Nomad</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "github-org/github-repo");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Space Nomad</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../content.html">
+   Content in Jupyter Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../content.html">
+   Content in Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/books/security/anomaly detection/cnb_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/youngseokjoung/My Book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/security/anomaly detection/cnb_model.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/youngseokjoung/My Book/main?urlpath=tree/docs/books/security/anomaly detection/cnb_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;cnb_model.py: </span>
+
+<span class="sd">This model is the implementation of Gaussian Naive Bayes Classification of KDD datasets.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Youngseok Joung&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2007, The Cogent Project&quot;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Youngseok Joung&quot;</span><span class="p">]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.0.1&quot;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Youngseok Joung&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="k">as</span> <span class="n">splitter</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">CategoricalNB</span>
+<span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="kn">import</span> <span class="nn">pstats</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="c1"># If the data type of the cell is &#39;object&#39;(Categorical), it will be transformed as a numerical </span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+            <span class="n">le_file_path</span> <span class="o">=</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;_encoder.pkl&#39;</span>
+<span class="c1">#             print(os.path.exists(le_file_path))</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">):</span>
+                <span class="n">pkl_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+                <span class="n">le</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pkl_file</span><span class="p">)</span> 
+                <span class="n">pkl_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+                <span class="c1">#exporting the departure encoder</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+                <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span>
+                <span class="n">le_name_mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">le_name_mapping</span><span class="p">)</span>
+                
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">le</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Preprocessing</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">result</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Preprocessing: Split 7:3 Train: Test</span>
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="c1"># Profile: Start </span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+    
+    <span class="c1"># train and test</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">CategoricalNB</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+    <span class="c1"># Profile: End </span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">dump_stats</span><span class="p">(</span><span class="s1">&#39;output.prof&#39;</span><span class="p">)</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_profiling.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="s1">&#39;output.prof&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s1">&#39;cumtime&#39;</span><span class="p">)</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;output.prof&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Estimation: Confusion Matrix &amp; classification-report </span>
+    <span class="n">_confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---Confusion Matrix---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---Classification Report---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
+
+    <span class="c1"># Freezing model for production </span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_model.joblib&#39;</span><span class="p">)</span> 
+    
+    <span class="k">return</span> <span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">_classification_report</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;cnb_kdd&#39;</span>
+<span class="c1"># model_name = &#39;xgboost_nsl_kdd&#39;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;kdd_prediction&#39;</span>
+<span class="c1"># dataset_name = &#39;kdd_prediction_NSL&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/&#39;</span> <span class="o">+</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;bound method NDFrame.head of        duration protocol_type   service  flag  src_bytes  dst_bytes      land  \
+0     -0.106216           tcp      smtp    SF  -0.003736  -0.040352 -0.011722   
+1     -0.107850           tcp      http    SF  -0.004276  -0.036652 -0.011722   
+2     -0.107850           tcp      http    SF  -0.004262   0.005956 -0.011722   
+3     -0.107033           tcp       ftp    SF  -0.003699  -0.006723 -0.011722   
+4     -0.107850           udp  domain_u    SF  -0.004368  -0.044940 -0.011722   
+...         ...           ...       ...   ...        ...        ...       ...   
+13446 -0.107850           tcp      http    SF  -0.004225   0.049683 -0.011722   
+13447 -0.107850           tcp      nntp  RSTO  -0.004392  -0.047028 -0.011722   
+13448 -0.107033           tcp      smtp    SF  -0.003734  -0.041519 -0.011722   
+13449 -0.107850           tcp      nnsp   REJ  -0.004392  -0.047028 -0.011722   
+13450 -0.107850           tcp      link    S0  -0.004392  -0.047028 -0.011722   
+
+       wrong_fragment    urgent        hot  ...  num_compromised  root_shell  \
+0           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+1           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+2           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+3           -0.084394 -0.004737  19.554084  ...        -0.007905    -0.01944   
+4           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+...               ...       ...        ...  ...              ...         ...   
+13446       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+13447       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+13448       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+13449       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+13450       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
+
+       su_attempted  num_root  num_file_creations  num_shells  \
+0         -0.008613  -0.01039           -0.020694   -0.018274   
+1         -0.008613  -0.01039           -0.020694   -0.018274   
+2         -0.008613  -0.01039           -0.020694   -0.018274   
+3         -0.008613  -0.01039           -0.020694   -0.018274   
+4         -0.008613  -0.01039           -0.020694   -0.018274   
+...             ...       ...                 ...         ...   
+13446     -0.008613  -0.01039           -0.020694   -0.018274   
+13447     -0.008613  -0.01039           -0.020694   -0.018274   
+13448     -0.008613  -0.01039           -0.020694   -0.018274   
+13449     -0.008613  -0.01039           -0.020694   -0.018274   
+13450     -0.008613  -0.01039           -0.020694   -0.018274   
+
+       num_access_files  is_guest_login     count  result  
+0             -0.050883       -0.068756 -0.731403  normal  
+1             -0.050883       -0.068756 -0.681570  normal  
+2             -0.050883       -0.068756 -0.711470  normal  
+3             -0.050883       14.544119 -0.731403     r2l  
+4             -0.050883       -0.068756 -0.302843  normal  
+...                 ...             ...       ...     ...  
+13446         -0.050883       -0.068756 -0.243044  normal  
+13447         -0.050883       -0.068756  0.484511     dos  
+13448         -0.050883       -0.068756 -0.731403  normal  
+13449         -0.050883       -0.068756  0.265248     dos  
+13450         -0.050883       -0.068756  1.929653     dos  
+
+[13451 rows x 22 columns]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># labeling</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\base.py:324: UserWarning: Trying to unpickle estimator LabelEncoder from version 0.24.1 when using version 1.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/modules/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocessing</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Preprocessing</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train and Test</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
+
+[[1476   31    0    0    0]
+ [  16 2222    4   14    0]
+ [ 112   12   26    0    0]
+ [   8   14    0   83    0]
+ [   1    9    0    7    1]]
+
+-----Classification Report-----
+
+              precision    recall  f1-score   support
+
+           0       0.92      0.98      0.95      1507
+           1       0.97      0.98      0.98      2256
+           2       0.87      0.17      0.29       150
+           3       0.80      0.79      0.79       105
+           4       1.00      0.06      0.11        18
+
+    accuracy                           0.94      4036
+   macro avg       0.91      0.60      0.62      4036
+weighted avg       0.94      0.94      0.93      4036
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">real_data</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">real_y</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">result</span>
+    <span class="n">real_x</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#     print(real_y)</span>
+<span class="c1">#     print(real_x)</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_model.joblib&#39;</span><span class="p">)</span>
+    <span class="n">yy_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">real_x</span><span class="p">)</span>
+    <span class="n">pred_label</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">yy_pred</span><span class="p">)</span>
+    <span class="n">real_label</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">real_y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Production</span>
+<span class="n">real_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/kdd_prediction.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<span class="n">real_data</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span> <span class="o">=</span> <span class="n">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">real_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+[&#39;normal&#39;] [&#39;normal&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\base.py:324: UserWarning: Trying to unpickle estimator LabelEncoder from version 0.24.1 when using version 1.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/modules/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./books\security\anomaly detection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Youngseok Joung<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

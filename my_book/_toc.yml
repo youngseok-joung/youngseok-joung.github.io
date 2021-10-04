@@ -8,3 +8,7 @@ sections:
   sections:
   - file: markdown
   - file: notebooks
+
+- file: books/security/content
+  sections:
+    - file: books/security/anomaly_detection/content

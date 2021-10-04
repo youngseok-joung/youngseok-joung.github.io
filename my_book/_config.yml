@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title                       : My Book  # The title of the book. Will be placed in the left navbar.
+title                       : Space Nomad  # The title of the book. Will be placed in the left navbar.
 author                      : Youngseok Joung  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
@@ -35,3 +35,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  comments:
+    utterances:
+      repo: "github-org/github-repo"
+

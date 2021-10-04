@@ -1,0 +1,53 @@
+Traceback (most recent call last):
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\RyanJoung\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\nbclient\client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Production
+real_data = pd.read_csv('./dataset/kdd_prediction.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
+real_data = real_data.head(1)
+print(real_data)
+
+expected_label = production(model_name, real_data)
+print(expected_label)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mValueError[0m                                Traceback (most recent call last)
+[1;32mC:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_15948/2638689565.py[0m in [0;36m<module>[1;34m[0m
+[0;32m      4[0m [0mprint[0m[1;33m([0m[0mreal_data[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m      5[0m [1;33m[0m[0m
+[1;32m----> 6[1;33m [0mexpected_label[0m [1;33m=[0m [0mproduction[0m[1;33m([0m[0mmodel_name[0m[1;33m,[0m [0mreal_data[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m      7[0m [0mprint[0m[1;33m([0m[0mexpected_label[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32mC:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_15948/3134202792.py[0m in [0;36mproduction[1;34m(model_name, data)[0m
+[0;32m      9[0m     [0myy_pred[0m [1;33m=[0m [0mclf[0m[1;33m.[0m[0mfit_predict[0m[1;33m([0m[0mreal_x[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     10[0m     [0mprint[0m[1;33m([0m[0myy_pred[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 11[1;33m     [0mreal_label[0m [1;33m=[0m [0mle[0m[1;33m.[0m[0minverse_transform[0m[1;33m([0m[0myy_pred[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     12[0m [1;33m[0m[0m
+[0;32m     13[0m     [1;32mreturn[0m [0mreal_label[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\preprocessing\_label.py[0m in [0;36minverse_transform[1;34m(self, y)[0m
+[0;32m    159[0m         [0mdiff[0m [1;33m=[0m [0mnp[0m[1;33m.[0m[0msetdiff1d[0m[1;33m([0m[0my[0m[1;33m,[0m [0mnp[0m[1;33m.[0m[0marange[0m[1;33m([0m[0mlen[0m[1;33m([0m[0mself[0m[1;33m.[0m[0mclasses_[0m[1;33m)[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    160[0m         [1;32mif[0m [0mlen[0m[1;33m([0m[0mdiff[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 161[1;33m             [1;32mraise[0m [0mValueError[0m[1;33m([0m[1;34m"y contains previously unseen labels: %s"[0m [1;33m%[0m [0mstr[0m[1;33m([0m[0mdiff[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    162[0m         [0my[0m [1;33m=[0m [0mnp[0m[1;33m.[0m[0masarray[0m[1;33m([0m[0my[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    163[0m         [1;32mreturn[0m [0mself[0m[1;33m.[0m[0mclasses_[0m[1;33m[[0m[0my[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;31mValueError[0m: y contains previously unseen labels: [-1]
+ValueError: y contains previously unseen labels: [-1]
+
