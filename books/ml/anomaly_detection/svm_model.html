@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Randomforest &#8212; Space Nomad</title>
+    <title>Support-vector machine &#8212; Space Nomad</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -85,6 +85,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Randomforest" href="randomforest_model.html" />
+    <link rel="prev" title="Anomaly Detection" href="content.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -121,43 +123,53 @@ commentsRunWhenDOMLoaded(addUtterances);
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../../intro.html">
-   Welcome to your Jupyter Book
+   Welcome to Space Nomads
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Math
+ </span>
+</p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../content.html">
-   Content in Jupyter Book
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../math/content.html">
+   Latex Math reference
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Anomaly Detection
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../markdown.html">
-     Markdown Files
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Support-vector machine
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../notebooks.html">
-     Content with notebooks
+    <a class="reference internal" href="randomforest_model.html">
+     Randomforest
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../content.html">
-   Content in Security
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
+   <li class="toctree-l2">
+    <a class="reference internal" href="xgboost_model.html">
+     XGBoost
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -201,7 +213,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/books/security/anomaly detection/randomforest_model.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/books/ml/anomaly_detection/svm_model.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -221,7 +233,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/security/anomaly detection/randomforest_model.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/ml/anomaly_detection/svm_model.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -242,7 +254,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/youngseokjoung/My Book/main?urlpath=tree/docs/books/security/anomaly detection/randomforest_model.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/youngseokjoung/My Book/main?urlpath=tree/docs/books/ml/anomaly_detection/svm_model.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
@@ -265,9 +277,48 @@ commentsRunWhenDOMLoaded(addUtterances);
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#could-i-use-decision-tree-for-better-result-what-if-we-use-multiple-decision-trees">
-   Could I use decision tree for better result? What if we use multiple decision trees
+  <a class="reference internal nav-link" href="#i-want-to-classify-something-well">
+   I want to classify something well!
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-shape-is-the-best-in-a-specific-dimension">
+     Which shape is the best in a specific Dimension?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-is-the-best-position-of-the-shape">
+     Where is the best position of the shape?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-classification">
+   Support-vector classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperplane">
+     Hyperplane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-margin">
+     Maximum-margin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-not-linearly-separable-in-that-space-curved-like-below">
+     Problem: Not linearly separable in that space (Curved like below)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hinge-loss-function">
+     Hinge Loss function
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -280,20 +331,79 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="randomforest">
-<h1>Randomforest<a class="headerlink" href="#randomforest" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="could-i-use-decision-tree-for-better-result-what-if-we-use-multiple-decision-trees">
-<h2>Could I use decision tree for better result? What if we use multiple decision trees<a class="headerlink" href="#could-i-use-decision-tree-for-better-result-what-if-we-use-multiple-decision-trees" title="Permalink to this headline">¶</a></h2>
-<p>Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. For classification tasks, the output of the random forest is the class selected by most trees. (<a class="reference external" href="https://en.wikipedia.org/wiki/Random_forest">https://en.wikipedia.org/wiki/Random_forest</a>)</p>
+  <div class="section" id="support-vector-machine">
+<h1>Support-vector machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="i-want-to-classify-something-well">
+<h2>I want to classify something well!<a class="headerlink" href="#i-want-to-classify-something-well" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>I can classify real objects in real world by my eyes and hands.
+How about entangible things like numbers, positions, attributes, types</p>
+</div></blockquote>
+<div class="section" id="which-shape-is-the-best-in-a-specific-dimension">
+<h3>Which shape is the best in a specific Dimension?<a class="headerlink" href="#which-shape-is-the-best-in-a-specific-dimension" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>How could we devide two points in a 1D by a point?
+Imagine that if there are different two points in a line.
+Which position of a new point is proper to divide the two points below?</p></li>
+</ol>
+<p><img alt="1d.PNG" src="../../../_images/1d.PNG" /></p>
+<ol class="simple">
+<li><p>How could we devide two points in a 2D by a line?</p></li>
+</ol>
+<p><img alt="2d.PNG" src="../../../_images/2d.PNG" /></p>
+<ol class="simple">
+<li><p>How could we devide two points in a 3D by a plane?</p></li>
+</ol>
+<p><img alt="3d.PNG" src="../../../_images/3d.PNG" /></p>
+</div>
+<div class="section" id="where-is-the-best-position-of-the-shape">
+<h3>Where is the best position of the shape?<a class="headerlink" href="#where-is-the-best-position-of-the-shape" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>The place Where it is the middle of the two points.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="support-vector-classification">
+<h2>Support-vector classification<a class="headerlink" href="#support-vector-classification" title="Permalink to this headline">¶</a></h2>
+<p>More formally, a support-vector machine <strong>constructs a hyperplane</strong> or set of hyperplanes in a high- or infinite-dimensional space, which can be used for classification, regression, or other tasks like outliers detection.[3]</p>
+<blockquote>
+<div><p>Intuitively, a good separation is achieved by *he hyperplane that has the largest distance to the nearest training-data point of any class (so-called functional margin), since in general the larger the margin, the lower the generalization error of the classifier.[4]</p>
+</div></blockquote>
+<p>The objective of the support vector machine algorithm is to find a hyperplane(N-1 D Subspace) in an N-dimensional space(N — the number of features) that distinctly classifies the data points. (<a class="reference external" href="https://en.wikipedia.org/wiki/Support-vector_machine">https://en.wikipedia.org/wiki/Support-vector_machine</a>)</p>
+<div class="section" id="hyperplane">
+<h3>Hyperplane<a class="headerlink" href="#hyperplane" title="Permalink to this headline">¶</a></h3>
+<p>In geometry, a hyperplane is a subspace whose dimension is <strong>one less</strong> than that of its ambient space. If a space is 3-dimensional then its hyperplanes are the 2-dimensional planes, while if the space is 2-dimensional, its hyperplanes are the 1-dimensional lines. (<a class="reference external" href="https://en.wikipedia.org/wiki/Hyperplane">https://en.wikipedia.org/wiki/Hyperplane</a>)</p>
+</div>
+<div class="section" id="maximum-margin">
+<h3>Maximum-margin<a class="headerlink" href="#maximum-margin" title="Permalink to this headline">¶</a></h3>
+<p>Maximum-margin hyperplane and margins for an SVM trained with samples from two classes. Samples on the margin are called the support vectors. (<a class="reference external" href="https://en.wikipedia.org/wiki/Support-vector_machine">https://en.wikipedia.org/wiki/Support-vector_machine</a>)</p>
+<p><img alt="SVM_margin.PNG" src="books/ml/anomaly_detection/assets/images/SVM_margin.PNG" /></p>
+</div>
+<div class="section" id="problem-not-linearly-separable-in-that-space-curved-like-below">
+<h3>Problem: Not linearly separable in that space (Curved like below)<a class="headerlink" href="#problem-not-linearly-separable-in-that-space-curved-like-below" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Kernal function is to keep the computational load reasonable, the mappings used by SVM schemes are designed to ensure that dot products of pairs of input data vectors may be computed easily in terms of the variables in the original space</p></li>
+</ol>
+<p><img alt="kernal_function.PNG" src="books/ml/anomaly_detection/assets/images/1920px-Kernel_Machine.svg.PNG" /></p>
+<ol class="simple">
+<li><p>a set of vectors is an orthogonal (and thus minimal) set of vectors that defines a hyperplane. The vectors defining the hyperplanes can be chosen to be linear combinations with parameters {\displaystyle \alpha <em>{i}}\alpha <em>{i} of images of feature vectors {\displaystyle x</em>{i}}x</em>{i} that occur in the data bas</p></li>
+</ol>
+</div>
+<div class="section" id="hinge-loss-function">
+<h3>Hinge Loss function<a class="headerlink" href="#hinge-loss-function" title="Permalink to this headline">¶</a></h3>
+<p>To extend SVM to cases in which the data are not linearly separable, the hinge loss function is helpful</p>
+<p><img alt="hinge_loss.PNG" src="../../../_images/hinge_loss.PNG" /></p>
+<p>The goal of the optimization then is to minimize</p>
+<p><img alt="optimization_function.PNG" src="../../../_images/optimization_function.PNG" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;randomforest_model.py: </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;svm_model.py: </span>
 
 <span class="sd">This model is the implementation of Classification of KDD datasets.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Youngseok Joung&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2007, The Cogent Project&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2021, The Cogent Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Youngseok Joung&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL&quot;</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.0.1&quot;</span>
@@ -304,7 +414,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="k">as</span> <span class="n">splitter</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 <span class="kn">import</span> <span class="nn">cProfile</span>
 <span class="kn">import</span> <span class="nn">pstats</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -319,7 +429,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1888</span><span class="o">/</span><span class="mf">2525075445.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1962</span><span class="o">/</span><span class="mf">1765717036.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> 
 <span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -338,7 +448,6 @@ commentsRunWhenDOMLoaded(addUtterances);
         <span class="c1"># If the data type of the cell is &#39;object&#39;(Categorical), it will be transformed as a numerical </span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
             <span class="n">le_file_path</span> <span class="o">=</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;_encoder.pkl&#39;</span>
-<span class="c1">#             print(os.path.exists(le_file_path))</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">):</span>
                 <span class="n">pkl_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
                 <span class="n">le</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pkl_file</span><span class="p">)</span> 
@@ -354,7 +463,6 @@ commentsRunWhenDOMLoaded(addUtterances);
             <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span>
                 <span class="n">le_name_mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)))</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">le_name_mapping</span><span class="p">)</span>
-                
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">le</span>
 </pre></div>
 </div>
@@ -382,7 +490,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="n">profile</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
     
     <span class="c1"># train and test</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 
@@ -415,8 +523,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;randomforest_kdd&#39;</span>
-<span class="c1"># model_name = &#39;randomforest_nsl_kdd&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;svm_kdd&#39;</span>
+<span class="c1"># model_name = &#39;svm_nsl_kdd&#39;</span>
 <span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;kdd_prediction&#39;</span>
 <span class="c1"># dataset_name = &#39;kdd_prediction_NSL&#39;</span>
 
@@ -491,11 +599,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-True
-True
-True
-{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
 </pre></div>
 </div>
 </div>
@@ -522,25 +626,25 @@ True
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1463    3   18    1    0]
- [   0 2261    2    0    0]
- [  34    5  125    0    0]
- [   0    5    0  104    2]
- [   0    3    1    0    9]]
+[[1491    9    0    0    0]
+ [   5 2258    0    4    0]
+ [  92   40   22    0    0]
+ [   0    9    0   89    1]
+ [   0    8    0    0    8]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-           0       0.98      0.99      0.98      1485
-           1       0.99      1.00      1.00      2263
-           2       0.86      0.76      0.81       164
-           3       0.99      0.94      0.96       111
-           4       0.82      0.69      0.75        13
+           0       0.94      0.99      0.97      1500
+           1       0.97      1.00      0.98      2267
+           2       1.00      0.14      0.25       154
+           3       0.96      0.90      0.93        99
+           4       0.89      0.50      0.64        16
 
-    accuracy                           0.98      4036
-   macro avg       0.93      0.88      0.90      4036
-weighted avg       0.98      0.98      0.98      4036
+    accuracy                           0.96      4036
+   macro avg       0.95      0.71      0.75      4036
+weighted avg       0.96      0.96      0.95      4036
 </pre></div>
 </div>
 </div>
@@ -576,13 +680,10 @@ weighted avg       0.98      0.98      0.98      4036
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-True
-True
-True
-{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
 [&#39;normal&#39;] [&#39;normal&#39;]
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -602,7 +703,7 @@ True
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./books/security/anomaly detection"
+            path: "./books/ml/anomaly_detection"
         },
         predefinedOutput: true
     }
@@ -618,6 +719,24 @@ True
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="content.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Anomaly Detection</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="randomforest_model.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Randomforest</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

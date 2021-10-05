@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Space Nomad</title>
+    <title>Machine Learning &#8212; Space Nomad</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -121,14 +121,31 @@ commentsRunWhenDOMLoaded(addUtterances);
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Welcome to your Jupyter Book
+   Welcome to Space Nomads
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Math
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../math/content.html">
+   Latex Math reference
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../content.html">
-   Content in Jupyter Book
+  <a class="reference internal" href="anomaly_detection/content.html">
+   Anomaly Detection
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -137,27 +154,20 @@ commentsRunWhenDOMLoaded(addUtterances);
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../markdown.html">
-     Markdown Files
+    <a class="reference internal" href="anomaly_detection/svm_model.html">
+     Support-vector machine
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../notebooks.html">
-     Content with notebooks
+    <a class="reference internal" href="anomaly_detection/randomforest_model.html">
+     Randomforest
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../security/content.html">
-   Content in Security
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
+   <li class="toctree-l2">
+    <a class="reference internal" href="anomaly_detection/xgboost_model.html">
+     XGBoost
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -201,7 +211,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/books/math/latex.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/books/ml/content.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -221,7 +231,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/math/latex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/ml/content.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -242,14 +252,6 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -258,9 +260,11 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <p><a class="reference external" href="https://www.math-linux.com/latex-26/faq/latex-faq/article/latex-derivatives-limits-sums-products-and-integrals">https://www.math-linux.com/latex-26/faq/latex-faq/article/latex-derivatives-limits-sums-products-and-integrals</a></p>
-<p><a class="reference external" href="https://kapeli.com/cheat_sheets/LaTeX_Math_Symbols.docset/Contents/Resources/Documents/index">https://kapeli.com/cheat_sheets/LaTeX_Math_Symbols.docset/Contents/Resources/Documents/index</a></p>
-<p><a class="reference external" href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></p>
+  <div class="section" id="machine-learning">
+<h1>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h1>
+<p>There are many ways to write content in Jupyter Book. This short section
+covers a few tips for how to do so.</p>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -275,7 +279,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./books/math"
+            path: "./books/ml"
         },
         predefinedOutput: true
     }
