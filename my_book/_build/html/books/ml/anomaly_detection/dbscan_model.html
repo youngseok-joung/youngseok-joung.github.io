@@ -60,7 +60,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "github-org/github-repo");
+    script.setAttribute("repo", "https://github.com/youngseok-joung/youngseok-joung.github.io.git");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -507,24 +507,24 @@ https://scikit-learn.org/stable/modules/model_persistence.html#security-maintain
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[   0    0    0 ...    0    0    0]
- [ 233    0   74 ...    5    5    5]
- [  58 1691    0 ...    0    0    0]
+[[  0   0   0 ...   0   0   0]
+ [216  62   0 ...   6   6   6]
+ [ 62   0 293 ...   0   0   0]
  ...
- [   0    0    0 ...    0    0    0]
- [   0    0    0 ...    0    0    0]
- [   0    0    0 ...    0    0    0]]
+ [  0   0   0 ...   0   0   0]
+ [  0   0   0 ...   0   0   0]
+ [  0   0   0 ...   0   0   0]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
           -1       0.00      0.00      0.00         0
-           0       0.00      0.00      0.00      1490
-           1       0.00      0.00      0.00      2243
-           2       0.01      0.01      0.01       164
-           3       0.10      0.02      0.03       121
-           4       0.00      0.00      0.00        18
+           0       0.74      0.04      0.08      1496
+           1       1.00      0.13      0.23      2247
+           2       0.00      0.00      0.00       153
+           3       0.00      0.00      0.00       121
+           4       0.02      0.05      0.03        19
            5       0.00      0.00      0.00         0
            6       0.00      0.00      0.00         0
            7       0.00      0.00      0.00         0
@@ -621,10 +621,16 @@ https://scikit-learn.org/stable/modules/model_persistence.html#security-maintain
           98       0.00      0.00      0.00         0
           99       0.00      0.00      0.00         0
          100       0.00      0.00      0.00         0
+         101       0.00      0.00      0.00         0
+         102       0.00      0.00      0.00         0
+         103       0.00      0.00      0.00         0
+         104       0.00      0.00      0.00         0
+         105       0.00      0.00      0.00         0
+         106       0.00      0.00      0.00         0
 
-    accuracy                           0.00      4036
-   macro avg       0.00      0.00      0.00      4036
-weighted avg       0.00      0.00      0.00      4036
+    accuracy                           0.09      4036
+   macro avg       0.02      0.00      0.00      4036
+weighted avg       0.83      0.09      0.16      4036
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\metrics\_classification.py:1308: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
@@ -712,13 +718,13 @@ Name: result, dtype: int32
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_9420/2638689565.py in &lt;module&gt;
+<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_28944/2638689565.py in &lt;module&gt;
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> 
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">expected_label</span> <span class="o">=</span> <span class="n">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">real_data</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">expected_label</span><span class="p">)</span>
 
-<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_9420/3134202792.py</span> in <span class="ni">production</span><span class="nt">(model_name, data)</span>
+<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_28944/3134202792.py</span> in <span class="ni">production</span><span class="nt">(model_name, data)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">yy_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">real_x</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="nb">print</span><span class="p">(</span><span class="n">yy_pred</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">real_label</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">yy_pred</span><span class="p">)</span>
@@ -778,7 +784,13 @@ Name: result, dtype: int32
         
           By Youngseok Joung<br/>
         
-            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"
+     crossorigin="anonymous"></script>
+</div>
+
+          </div>
       </p>
     </div>
   </footer>

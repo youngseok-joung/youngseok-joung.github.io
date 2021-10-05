@@ -37,5 +37,14 @@ html:
   use_repository_button: true
   comments:
     utterances:
-      repo: "github-org/github-repo"
+      repo: "https://github.com/youngseok-joung/youngseok-joung.github.io.git"
+
+  extra_footer: |
+    <div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"
+         crossorigin="anonymous"></script>
+    </div>
+sphinx:
+  config:
+    html_show_copyright: false
 
