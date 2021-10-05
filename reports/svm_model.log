@@ -39,15 +39,16 @@ import cProfile
 import pstats
 import os
 import sys
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
 from sklearn.preprocessing import LabelEncoder
+from matplotlib import pyplot
 import pickle
 from joblib import dump, load
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1997/1765717036.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1898/3861057425.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     13[0m [0m__status__[0m [0;34m=[0m [0;34m"Production"[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     14[0m [0;34m[0m[0m
 [0;32m---> 15[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
