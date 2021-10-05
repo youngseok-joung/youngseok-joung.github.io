@@ -1,14 +1,48 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 
-format: jb-article
+format: jb-book
 root: intro
-sections:
-- file: content
-  sections:
-  - file: markdown
-  - file: notebooks
+parts:
+  - caption: Math
+    chapters:
+    - file: books/math/content
+#      sections:
+#        - file: books/ml/anomaly_detection/content
 
-- file: books/security/content
-  sections:
-    - file: books/security/anomaly_detection/content
+  - caption: Machine Learning
+    chapters:
+    - file: books/ml/anomaly_detection/content
+      sections:
+        - file: books/ml/anomaly_detection/svm_model
+        - file: books/ml/anomaly_detection/randomforest_model
+        - file: books/ml/anomaly_detection/xgboost_model
+        - file: books/ml/anomaly_detection/cnb_model
+        - file: books/ml/anomaly_detection/keras_model
+
+  - caption: Robotics
+    chapters:
+    - file: books/robotics/content
+      sections:
+        - file: books/robotics/anomaly_detection/content
+
+#  - caption: Robotics
+#    chapters:
+#    - file: books/robotics/content
+#      sections:
+#        - file: books/robotics/anomaly_detection/content
+
+#part:
+#  - capter:
+#      - file: books/ml/content
+#        sections:
+#          - file: books/ml/anomaly_detection/content
+
+
+#sections:
+#- file: content
+#  sections:
+#  - file: markdown
+#  - file: notebooks
+
+

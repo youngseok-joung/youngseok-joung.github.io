@@ -1,16 +1,21 @@
-# Welcome to your Jupyter Book
+# Welcome to Space Nomads
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is an academy for space engineering
 
 :::{note}
-Here is a note!
+Welcome to the New Space Journey 
 :::
 
-And here is a code block:
+It has overall knowledge to conduct space engineering:
 
 ```
-e = mc^2
+Math
+Physics
+Electronics
+Robotics
+Computer Science
+Rocket Science
+Aviation
 ```
+Not too hard, just enjoy step by step!
 
-Check out the content pages bundled with this sample book to see more.
