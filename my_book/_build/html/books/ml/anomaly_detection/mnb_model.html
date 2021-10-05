@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaussian naive bayes classifier &#8212; Space Nomad</title>
+    <title>Gaussian naive bayes classifier &#8212; Space Nomads</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -112,7 +112,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <img src="../../../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Space Nomad</h1>
+      <h1 class="site-logo" id="site-title">Space Nomads</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
@@ -511,11 +511,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\base.py:324: UserWarning: Trying to unpickle estimator LabelEncoder from version 0.24.1 when using version 1.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
-https://scikit-learn.org/stable/modules/model_persistence.html#security-maintainability-limitations
-  warnings.warn(
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -540,40 +535,40 @@ https://scikit-learn.org/stable/modules/model_persistence.html#security-maintain
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_22776/2709227883.py in &lt;module&gt;
+<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_31516/2709227883.py in &lt;module&gt;
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Train and Test</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_22776/932345000.py</span> in <span class="ni">train_and_test</span><span class="nt">(model_name, x_train, x_test, y_train, y_test)</span>
+<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_31516/932345000.py</span> in <span class="ni">train_and_test</span><span class="nt">(model_name, x_train, x_test, y_train, y_test)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># train and test</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> 
 
-<span class="nn">~\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span>         <span class="n">n_classes</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_init_counters</span><span class="p">(</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">690</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span>         <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_alpha</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_update_feature_log_prob</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+<span class="nn">~\.conda\envs\mybook\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">636</span> 
+<span class="g g-Whitespace">    </span><span class="mi">637</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_init_counters</span><span class="p">(</span><span class="n">n_effective_classes</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">638</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span>         <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_alpha</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_update_feature_log_prob</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
 
-<span class="nn">~\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">_count</span><span class="nt">(self, X, Y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>     <span class="k">def</span> <span class="nf">_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="sd">&quot;&quot;&quot;Count and smooth feature occurrences.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">863</span>         <span class="n">check_non_negative</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;MultinomialNB (input X)&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="bp">self</span><span class="o">.</span><span class="n">feature_count_</span> <span class="o">+=</span> <span class="n">safe_sparse_dot</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="bp">self</span><span class="o">.</span><span class="n">class_count_</span> <span class="o">+=</span> <span class="n">Y</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nn">~\.conda\envs\mybook\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">_count</span><span class="nt">(self, X, Y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>     <span class="k">def</span> <span class="nf">_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span>         <span class="sd">&quot;&quot;&quot;Count and smooth feature occurrences.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">771</span>         <span class="n">check_non_negative</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;MultinomialNB (input X)&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">772</span>         <span class="bp">self</span><span class="o">.</span><span class="n">feature_count_</span> <span class="o">+=</span> <span class="n">safe_sparse_dot</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span>         <span class="bp">self</span><span class="o">.</span><span class="n">class_count_</span> <span class="o">+=</span> <span class="n">Y</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nn">~\OneDrive - Datapod Pty Ltd\Desktop\uc\mybook\my_book\venv\lib\site-packages\sklearn\utils\validation.py</span> in <span class="ni">check_non_negative</span><span class="nt">(X, whom)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1233</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1234</span>     <span class="k">if</span> <span class="n">X_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1235</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Negative values in data passed to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">whom</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1236</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1237</span> 
+<span class="nn">~\.conda\envs\mybook\lib\site-packages\sklearn\utils\validation.py</span> in <span class="ni">check_non_negative</span><span class="nt">(X, whom)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="k">if</span> <span class="n">X_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1068</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Negative values in data passed to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">whom</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1070</span> 
 
 <span class="nn">ValueError: Negative values</span> in <span class="ni">data passed to MultinomialNB </span><span class="nt">(input X)</span>
 </pre></div>
@@ -654,6 +649,7 @@ https://scikit-learn.org/stable/modules/model_persistence.html#security-maintain
         
           By Youngseok Joung<br/>
         
+            &copy; Copyright 2021.<br/>
           <div class="extra_footer">
             <div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"

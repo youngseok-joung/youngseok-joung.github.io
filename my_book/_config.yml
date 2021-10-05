@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title                       : Space Nomad  # The title of the book. Will be placed in the left navbar.
+title                       : Space Nomads  # The title of the book. Will be placed in the left navbar.
 author                      : Youngseok Joung  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
@@ -38,13 +38,12 @@ html:
   comments:
     utterances:
       repo: "https://github.com/youngseok-joung/youngseok-joung.github.io.git"
-
   extra_footer: |
     <div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"
          crossorigin="anonymous"></script>
     </div>
-sphinx:
-  config:
-    html_show_copyright: false
+#sphinx:
+#  config:
+#    html_show_copyright: false
 
