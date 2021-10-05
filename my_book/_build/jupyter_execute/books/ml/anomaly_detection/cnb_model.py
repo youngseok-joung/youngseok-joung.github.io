@@ -148,7 +148,7 @@ print('\n-----Classification Report-----\n')
 print(cr)
 
 
-# In[9]:
+# In[ ]:
 
 
 def production(model_name, data):
@@ -166,7 +166,7 @@ def production(model_name, data):
     return pred_label, real_label
 
 
-# In[10]:
+# In[ ]:
 
 
 # Production

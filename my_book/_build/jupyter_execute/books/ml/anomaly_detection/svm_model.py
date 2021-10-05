@@ -87,8 +87,9 @@ import cProfile
 import pstats
 import os
 import sys
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
 from sklearn.preprocessing import LabelEncoder
+from matplotlib import pyplot
 import pickle
 from joblib import dump, load
 
@@ -154,23 +155,103 @@ def train_and_test(model_name, x_train, x_test, y_train, y_test):
     stats.print_stats()
     os.remove('output.prof')
     
+    # Freezing model for production 
+    dump(model, 'result/' + model_name + '/' + model_name + '_model.joblib') 
+    
+    return model, y_pred
+
+
+# In[5]:
+
+
+def report(model_name, y_test, y_pred, le=None):
     # Estimation: Confusion Matrix & classification-report 
     _confusion_matrix = confusion_matrix(y_test, y_pred)
-    _classification_report = classification_report(y_test, y_pred)
-    
+    _classification_report = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=False)
+    _classification_report_dict = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=True)
+
+    # For Multiclass AUC
+    _auc_dict = roc_auc_score_multiclass(y_test, y_pred)
+    _auc_dict = dict((le.classes_[key], value) for (key, value) in _auc_dict.items())
+#     _auc = roc_auc_score(y_test, y_pred, multi_class='ovr')
+#     _fpr, _tpr, _thresholds = roc_curve(y_test, y_pred)
+
     with open('result/' + model_name + '/' + model_name + '_output.txt', 'w') as f:
         f.write("\n---Confusion Matrix---\n")
         f.write(np.array2string(_confusion_matrix, separator=', '))
         f.write("\n---Classification Report---\n")
         f.write(_classification_report)
-
-    # Freezing model for production 
-    dump(model, 'result/' + model_name + '/' + model_name + '_model.joblib') 
+        f.write("\n---ROC AUC Score---\n")
+        f.write(str(_auc_dict))
+#         f.write(_auc)
     
-    return _confusion_matrix, _classification_report
+    print('\n-----Confusion Matrix-----\n')
+    print(_confusion_matrix)
+    print('\n-----Classification Report-----\n')
+    print(_classification_report)
+    print('\n-----AUC Dictionary-----\n')
+    print(str(_auc_dict))
+    
+    metrix = ['precision', 'recall', 'f1-score', 'support']
+    xKeys = le.classes_
+    for met in metrix:
+        xValues = []
+        for target_name in le.classes_:
+            xValues += [_classification_report_dict[target_name][met]]
+
+        pyplot.title(met)
+        pyplot.bar(range(len(xValues)), list(xValues), align='center')
+        pyplot.xticks(range(len(xKeys)), list(xKeys))
+        pyplot.show()
+
+    pyplot.title(met)
+    pyplot.bar(range(len(xValues)), list(xValues), align='center')
+    pyplot.xticks(range(len(xKeys)), list(xKeys))
+    pyplot.show()
+    
+    pyplot.title('AUC')
+    pyplot.bar(range(len(_auc_dict)), list(_auc_dict.values()), align='center')
+    pyplot.xticks(range(len(_auc_dict)), list(_auc_dict.keys()))
+    pyplot.show()
+    
+#     # plot the roc curve for the model
+#     # pyplot.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
+#     pyplot.plot(_fpr, _tpr, marker='.', label=model_name)
+#     # axis labels
+#     pyplot.xlabel('False Positive Rate')
+#     pyplot.ylabel('True Positive Rate')
+#     # show the legend
+#     pyplot.legend()
+#     # show the plot
+#     pyplot.show()
+    
+    return _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
+    
 
 
-# In[5]:
+# In[6]:
+
+
+def roc_auc_score_multiclass(y_test, y_pred, average = "macro"):
+    #creating a set of all the unique classes using the actual class list
+    unique_class = set(y_test)
+    roc_auc_dict = {}
+    for per_class in unique_class:
+        #creating a list of all the classes except the current class 
+        other_class = [x for x in unique_class if x != per_class]
+
+        #marking the current class as 1 and all other classes as 0
+        new_y_test = [0 if x in other_class else 1 for x in y_test]
+        new_y_pred = [0 if x in other_class else 1 for x in y_pred]
+
+        #using the sklearn metrics method to calculate the roc_auc_score
+        roc_auc = roc_auc_score(new_y_test, new_y_pred, average = average)
+        roc_auc_dict[per_class] = roc_auc
+
+    return roc_auc_dict
+
+
+# In[7]:
 
 
 model_name = 'svm_kdd'
@@ -182,32 +263,32 @@ data = pd.read_csv('./dataset/' + dataset_name + '.csv', delimiter=',', dtype={'
 print(data.head)
 
 
-# In[6]:
+# In[8]:
 
 
 # labeling
-data, _ = labelEncoding(model_name, data)
+data, le = labelEncoding(model_name, data)
 
 
-# In[7]:
+# In[9]:
 
 
 # Preprocessing
 x_train, x_test, y_train, y_test = Preprocessing(model_name, data)
 
 
-# In[8]:
+# In[10]:
 
 
 # Train and Test
-cm, cr = train_and_test(model_name, x_train, x_test, y_train, y_test)
-print('\n-----Confusion Matrix-----\n')
-print(cm)
-print('\n-----Classification Report-----\n')
-print(cr)
+model, y_pred = train_and_test(model_name, x_train, x_test, y_train, y_test)
+# Report
+cm, cr, auc, _ = report(model_name, y_test, y_pred, le)
 
 
-# In[9]:
+# # Test in Product 
+
+# In[11]:
 
 
 def production(model_name, data):
@@ -225,7 +306,7 @@ def production(model_name, data):
     return pred_label, real_label
 
 
-# In[10]:
+# In[12]:
 
 
 # Production

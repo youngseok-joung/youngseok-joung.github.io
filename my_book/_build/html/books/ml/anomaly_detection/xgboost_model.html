@@ -305,8 +305,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="kn">import</span> <span class="nn">pstats</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
 </pre></div>
@@ -320,7 +321,6 @@ commentsRunWhenDOMLoaded(addUtterances);
         <span class="c1"># If the data type of the cell is &#39;object&#39;(Categorical), it will be transformed as a numerical </span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
             <span class="n">le_file_path</span> <span class="o">=</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;_encoder.pkl&#39;</span>
-<span class="c1">#             print(os.path.exists(le_file_path))</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">):</span>
                 <span class="n">pkl_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">le_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
                 <span class="n">le</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pkl_file</span><span class="p">)</span> 
@@ -377,20 +377,102 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="n">stats</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
     <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;output.prof&#39;</span><span class="p">)</span>
     
+    <span class="c1"># Freezing model for production </span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_model.joblib&#39;</span><span class="p">)</span> 
+    
+    <span class="k">return</span> <span class="n">model</span><span class="p">,</span> <span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="c1"># Estimation: Confusion Matrix &amp; classification-report </span>
     <span class="n">_confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    
+    <span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_classification_report_dict</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># For Multiclass AUC</span>
+    <span class="n">_auc_dict</span> <span class="o">=</span> <span class="n">roc_auc_score_multiclass</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">_auc_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_auc_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="c1">#     _auc = roc_auc_score(y_test, y_pred, multi_class=&#39;ovr&#39;)</span>
+<span class="c1">#     _fpr, _tpr, _thresholds = roc_curve(y_test, y_pred)</span>
+
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---Confusion Matrix---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">))</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---Classification Report---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
-
-    <span class="c1"># Freezing model for production </span>
-    <span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;result/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_model.joblib&#39;</span><span class="p">)</span> 
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---ROC AUC Score---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
+<span class="c1">#         f.write(_auc)</span>
     
-    <span class="k">return</span> <span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">_classification_report</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">_confusion_matrix</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----AUC Dictionary-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
+    
+    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">]</span>
+    <span class="n">xKeys</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
+    <span class="k">for</span> <span class="n">met</span> <span class="ow">in</span> <span class="n">metrix</span><span class="p">:</span>
+        <span class="n">xValues</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">:</span>
+            <span class="n">xValues</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_classification_report_dict</span><span class="p">[</span><span class="n">target_name</span><span class="p">][</span><span class="n">met</span><span class="p">]]</span>
+
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="c1">#     # plot the roc curve for the model</span>
+<span class="c1">#     # pyplot.plot(ns_fpr, ns_tpr, linestyle=&#39;--&#39;, label=&#39;No Skill&#39;)</span>
+<span class="c1">#     pyplot.plot(_fpr, _tpr, marker=&#39;.&#39;, label=model_name)</span>
+<span class="c1">#     # axis labels</span>
+<span class="c1">#     pyplot.xlabel(&#39;False Positive Rate&#39;)</span>
+<span class="c1">#     pyplot.ylabel(&#39;True Positive Rate&#39;)</span>
+<span class="c1">#     # show the legend</span>
+<span class="c1">#     pyplot.legend()</span>
+<span class="c1">#     # show the plot</span>
+<span class="c1">#     pyplot.show()</span>
+    
+    <span class="k">return</span> <span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">_classification_report</span><span class="p">,</span> <span class="n">_auc_dict</span><span class="p">,</span> <span class="n">_classification_report_dict</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">roc_auc_score_multiclass</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s2">&quot;macro&quot;</span><span class="p">):</span>
+    <span class="c1">#creating a set of all the unique classes using the actual class list</span>
+    <span class="n">unique_class</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+    <span class="n">roc_auc_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">per_class</span> <span class="ow">in</span> <span class="n">unique_class</span><span class="p">:</span>
+        <span class="c1">#creating a list of all the classes except the current class </span>
+        <span class="n">other_class</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unique_class</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">per_class</span><span class="p">]</span>
+
+        <span class="c1">#marking the current class as 1 and all other classes as 0</span>
+        <span class="n">new_y_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">other_class</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_test</span><span class="p">]</span>
+        <span class="n">new_y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">other_class</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+
+        <span class="c1">#using the sklearn metrics method to calculate the roc_auc_score</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">new_y_test</span><span class="p">,</span> <span class="n">new_y_pred</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="n">average</span><span class="p">)</span>
+        <span class="n">roc_auc_dict</span><span class="p">[</span><span class="n">per_class</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc</span>
+
+    <span class="k">return</span> <span class="n">roc_auc_dict</span>
 </pre></div>
 </div>
 </div>
@@ -468,7 +550,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># labeling</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -489,38 +571,47 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train and Test</span>
-<span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="c1"># Report</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1521    1    9    0    0]
- [   0 2232    0    0    0]
- [  26    3  121    0    1]
- [   0    5    0  106    1]
- [   0    2    0    2    6]]
+[[1493    4   17    0    0]
+ [   2 2253    0    2    0]
+ [  25    4  115    0    0]
+ [   0    3    0  101    3]
+ [   0    1    1    0   12]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-           0       0.98      0.99      0.99      1531
-           1       1.00      1.00      1.00      2232
-           2       0.93      0.80      0.86       151
-           3       0.98      0.95      0.96       112
-           4       0.75      0.60      0.67        10
+         dos       0.98      0.99      0.98      1514
+      normal       0.99      1.00      1.00      2257
+       probe       0.86      0.80      0.83       144
+         r2l       0.98      0.94      0.96       107
+         u2r       0.80      0.86      0.83        14
 
-    accuracy                           0.99      4036
-   macro avg       0.93      0.87      0.90      4036
-weighted avg       0.99      0.99      0.99      4036
+    accuracy                           0.98      4036
+   macro avg       0.92      0.92      0.92      4036
+weighted avg       0.98      0.98      0.98      4036
+
+
+-----AUC Dictionary-----
+
+{&#39;dos&#39;: 0.9877118346660354, &#39;normal&#39;: 0.9957411866847081, &#39;probe&#39;: 0.8969931197898824, &#39;r2l&#39;: 0.9717080991334505, &#39;u2r&#39;: 0.9281984797897279}
 </pre></div>
 </div>
+<img alt="../../../_images/xgboost_model_10_1.png" src="../../../_images/xgboost_model_10_1.png" />
+<img alt="../../../_images/xgboost_model_10_2.png" src="../../../_images/xgboost_model_10_2.png" />
+<img alt="../../../_images/xgboost_model_10_3.png" src="../../../_images/xgboost_model_10_3.png" />
+<img alt="../../../_images/xgboost_model_10_4.png" src="../../../_images/xgboost_model_10_4.png" />
+<img alt="../../../_images/xgboost_model_10_5.png" src="../../../_images/xgboost_model_10_5.png" />
+<img alt="../../../_images/xgboost_model_10_6.png" src="../../../_images/xgboost_model_10_6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -555,9 +646,7 @@ weighted avg       0.99      0.99      0.99      4036
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;normal&#39;] [&#39;normal&#39;]
+[&#39;normal&#39;] [&#39;normal&#39;]
 </pre></div>
 </div>
 </div>
