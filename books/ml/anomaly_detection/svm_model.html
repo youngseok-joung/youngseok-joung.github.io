@@ -442,7 +442,7 @@ Which position of a new point is proper to divide the two points below?</p></li>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1898</span><span class="o">/</span><span class="mf">3861057425.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1885</span><span class="o">/</span><span class="mf">3861057425.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> 
 <span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -554,7 +554,8 @@ Which position of a new point is proper to divide the two points below?</p></li>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----AUC Dictionary-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
     
-    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">]</span>
+    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">]</span>
+<span class="c1">#     metrix = [&#39;precision&#39;, &#39;recall&#39;, &#39;f1-score&#39;, &#39;support&#39;]</span>
     <span class="n">xKeys</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
     <span class="k">for</span> <span class="n">met</span> <span class="ow">in</span> <span class="n">metrix</span><span class="p">:</span>
         <span class="n">xValues</span> <span class="o">=</span> <span class="p">[]</span>
@@ -565,11 +566,6 @@ Which position of a new point is proper to divide the two points below?</p></li>
         <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
         <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
         <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
     <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
@@ -719,38 +715,36 @@ Which position of a new point is proper to divide the two points below?</p></li>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1457   13    0    0    0]
- [   3 2286    0    5    0]
- [  81   34   23    0    0]
- [   0   11    0  108    0]
- [   0    8    0    3    4]]
+[[1460   16    0    0    0]
+ [   6 2255    0    2    0]
+ [  98   51   20    0    0]
+ [   0   11    0  104    0]
+ [   0    6    0    4    3]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.95      0.99      0.97      1470
-      normal       0.97      1.00      0.98      2294
-       probe       1.00      0.17      0.29       138
-         r2l       0.93      0.91      0.92       119
-         u2r       1.00      0.27      0.42        15
+         dos       0.93      0.99      0.96      1476
+      normal       0.96      1.00      0.98      2263
+       probe       1.00      0.12      0.21       169
+         r2l       0.95      0.90      0.92       115
+         u2r       1.00      0.23      0.38        13
 
-    accuracy                           0.96      4036
-   macro avg       0.97      0.67      0.72      4036
-weighted avg       0.96      0.96      0.95      4036
+    accuracy                           0.95      4036
+   macro avg       0.97      0.65      0.69      4036
+weighted avg       0.95      0.95      0.94      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.9792103435294617, &#39;normal&#39;: 0.979312578012626, &#39;probe&#39;: 0.5833333333333334, &#39;r2l&#39;: 0.9527603229190578, &#39;u2r&#39;: 0.6333333333333333}
+{&#39;dos&#39;: 0.9742674457994579, &#39;normal&#39;: 0.9745437715384622, &#39;probe&#39;: 0.5591715976331361, &#39;r2l&#39;: 0.9514088021023919, &#39;u2r&#39;: 0.6153846153846154}
 </pre></div>
 </div>
 <img alt="../../../_images/svm_model_10_1.png" src="../../../_images/svm_model_10_1.png" />
 <img alt="../../../_images/svm_model_10_2.png" src="../../../_images/svm_model_10_2.png" />
 <img alt="../../../_images/svm_model_10_3.png" src="../../../_images/svm_model_10_3.png" />
 <img alt="../../../_images/svm_model_10_4.png" src="../../../_images/svm_model_10_4.png" />
-<img alt="../../../_images/svm_model_10_5.png" src="../../../_images/svm_model_10_5.png" />
-<img alt="../../../_images/svm_model_10_6.png" src="../../../_images/svm_model_10_6.png" />
 </div>
 </div>
 </div>

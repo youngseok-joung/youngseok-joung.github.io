@@ -316,7 +316,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1916</span><span class="o">/</span><span class="mf">1937478419.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1904</span><span class="o">/</span><span class="mf">1937478419.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> 
 <span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -429,7 +429,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----AUC Dictionary-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
     
-    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">]</span>
+    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">]</span>
+<span class="c1">#     metrix = [&#39;precision&#39;, &#39;recall&#39;, &#39;f1-score&#39;, &#39;support&#39;]</span>
     <span class="n">xKeys</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
     <span class="k">for</span> <span class="n">met</span> <span class="ow">in</span> <span class="n">metrix</span><span class="p">:</span>
         <span class="n">xValues</span> <span class="o">=</span> <span class="p">[]</span>
@@ -441,11 +442,6 @@ commentsRunWhenDOMLoaded(addUtterances);
         <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
         <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
     <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
@@ -594,38 +590,36 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1463    1   21    0    0]
- [   0 2258    0    3    1]
- [  19    4  130    0    0]
- [   0    2    1  115    1]
- [   0    2    1    1   13]]
+[[1484    1    4    0    0]
+ [   1 2245    1    2    0]
+ [  27    5  129    1    0]
+ [   1    5    0  105    2]
+ [   0    4    2    0   17]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.99      0.99      0.99      1485
-      normal       1.00      1.00      1.00      2262
-       probe       0.85      0.85      0.85       153
-         r2l       0.97      0.97      0.97       119
-         u2r       0.87      0.76      0.81        17
+         dos       0.98      1.00      0.99      1489
+      normal       0.99      1.00      1.00      2249
+       probe       0.95      0.80      0.87       162
+         r2l       0.97      0.93      0.95       113
+         u2r       0.89      0.74      0.81        23
 
     accuracy                           0.99      4036
-   macro avg       0.93      0.91      0.92      4036
+   macro avg       0.96      0.89      0.92      4036
 weighted avg       0.99      0.99      0.99      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.9888685628003543, &#39;normal&#39;: 0.996579186341267, &#39;probe&#39;: 0.9218749736996696, &#39;r2l&#39;: 0.9826826824679323, &#39;u2r&#39;: 0.8821041230625118}
+{&#39;dos&#39;: 0.9926280486952742, &#39;normal&#39;: 0.9949137376980081, &#39;probe&#39;: 0.8972446891909979, &#39;r2l&#39;: 0.9642194094730643, &#39;u2r&#39;: 0.8693160272592336}
 </pre></div>
 </div>
 <img alt="../../../_images/xgboost_model_10_1.png" src="../../../_images/xgboost_model_10_1.png" />
 <img alt="../../../_images/xgboost_model_10_2.png" src="../../../_images/xgboost_model_10_2.png" />
 <img alt="../../../_images/xgboost_model_10_3.png" src="../../../_images/xgboost_model_10_3.png" />
 <img alt="../../../_images/xgboost_model_10_4.png" src="../../../_images/xgboost_model_10_4.png" />
-<img alt="../../../_images/xgboost_model_10_5.png" src="../../../_images/xgboost_model_10_5.png" />
-<img alt="../../../_images/xgboost_model_10_6.png" src="../../../_images/xgboost_model_10_6.png" />
 </div>
 </div>
 <div class="cell docutils container">
