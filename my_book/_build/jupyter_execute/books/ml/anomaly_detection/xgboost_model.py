@@ -137,7 +137,8 @@ def report(model_name, y_test, y_pred, le=None):
     print('\n-----AUC Dictionary-----\n')
     print(str(_auc_dict))
     
-    metrix = ['precision', 'recall', 'f1-score', 'support']
+    metrix = ['precision', 'recall', 'f1-score']
+#     metrix = ['precision', 'recall', 'f1-score', 'support']
     xKeys = le.classes_
     for met in metrix:
         xValues = []
@@ -149,11 +150,6 @@ def report(model_name, y_test, y_pred, le=None):
         pyplot.xticks(range(len(xKeys)), list(xKeys))
         pyplot.show()
 
-    pyplot.title(met)
-    pyplot.bar(range(len(xValues)), list(xValues), align='center')
-    pyplot.xticks(range(len(xKeys)), list(xKeys))
-    pyplot.show()
-    
     pyplot.title('AUC')
     pyplot.bar(range(len(_auc_dict)), list(_auc_dict.values()), align='center')
     pyplot.xticks(range(len(_auc_dict)), list(_auc_dict.keys()))

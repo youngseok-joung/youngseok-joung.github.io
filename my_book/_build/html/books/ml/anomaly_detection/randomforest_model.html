@@ -431,7 +431,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----AUC Dictionary-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
     
-    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">]</span>
+    <span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">]</span>
+<span class="c1">#     metrix = [&#39;precision&#39;, &#39;recall&#39;, &#39;f1-score&#39;, &#39;support&#39;]</span>
     <span class="n">xKeys</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
     <span class="k">for</span> <span class="n">met</span> <span class="ow">in</span> <span class="n">metrix</span><span class="p">:</span>
         <span class="n">xValues</span> <span class="o">=</span> <span class="p">[]</span>
@@ -443,11 +444,6 @@ commentsRunWhenDOMLoaded(addUtterances);
         <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
         <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
     <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
@@ -596,38 +592,36 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1464    2   24    0    0]
- [   0 2266    1    0    0]
- [  31    3  121    0    0]
- [   0    6    2   97    2]
- [   0    2    1    0   14]]
+[[1489    2   34    0    0]
+ [   0 2241    0    1    0]
+ [  26    1  104    1    0]
+ [   0    5    0  117    1]
+ [   0    3    1    2    8]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.98      0.98      0.98      1490
-      normal       0.99      1.00      1.00      2267
-       probe       0.81      0.78      0.80       155
-         r2l       1.00      0.91      0.95       107
-         u2r       0.88      0.82      0.85        17
+         dos       0.98      0.98      0.98      1525
+      normal       1.00      1.00      1.00      2242
+       probe       0.75      0.79      0.77       132
+         r2l       0.97      0.95      0.96       123
+         u2r       0.89      0.57      0.70        14
 
     accuracy                           0.98      4036
-   macro avg       0.93      0.90      0.91      4036
+   macro avg       0.92      0.86      0.88      4036
 weighted avg       0.98      0.98      0.98      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.9851871866383379, &#39;normal&#39;: 0.9961050518873417, &#39;probe&#39;: 0.8867152629435381, &#39;r2l&#39;: 0.9532710280373832, &#39;u2r&#39;: 0.9115158877683942}
+{&#39;dos&#39;: 0.9830195010804919, &#39;normal&#39;: 0.9967112100300637, &#39;probe&#39;: 0.8894568119721808, &#39;r2l&#39;: 0.9750986393073744, &#39;u2r&#39;: 0.7855899694537188}
 </pre></div>
 </div>
 <img alt="../../../_images/randomforest_model_10_1.png" src="../../../_images/randomforest_model_10_1.png" />
 <img alt="../../../_images/randomforest_model_10_2.png" src="../../../_images/randomforest_model_10_2.png" />
 <img alt="../../../_images/randomforest_model_10_3.png" src="../../../_images/randomforest_model_10_3.png" />
 <img alt="../../../_images/randomforest_model_10_4.png" src="../../../_images/randomforest_model_10_4.png" />
-<img alt="../../../_images/randomforest_model_10_5.png" src="../../../_images/randomforest_model_10_5.png" />
-<img alt="../../../_images/randomforest_model_10_6.png" src="../../../_images/randomforest_model_10_6.png" />
 </div>
 </div>
 <div class="cell docutils container">
