@@ -276,9 +276,21 @@ commentsRunWhenDOMLoaded(addUtterances);
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#could-i-use-decision-tree-for-better-result-what-if-we-use-multiple-decision-trees">
-   Could I use decision tree for better result? What if we use multiple decision trees
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Randomforest
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-i-use-decision-tree-for-better-result-what-if-we-use-multiple-decision-trees">
+     Could I use decision tree for better result? What if we use multiple decision trees
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-in-product">
+   Test in Product
   </a>
  </li>
 </ul>
@@ -299,9 +311,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. For classification tasks, the output of the random forest is the class selected by most trees. (<a class="reference external" href="https://en.wikipedia.org/wiki/Random_forest">https://en.wikipedia.org/wiki/Random_forest</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;randomforest_model.py: </span>
-
-<span class="sd">This model is the implementation of Classification of KDD datasets.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;randomforest_model.py: This model is the implementation of Classification of KDD datasets.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Youngseok Joung&#39;</span>
@@ -333,6 +343,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;labelEncoding function replace the categorical valeu with a numberic value from 0 and the number of classes -1.</span>
+<span class="sd">    Also, the label encoder object is saved as a file using Pickle package to be recalled after classification.</span>
+
+<span class="sd">    :param model_name: model name used in this project (e.g. &quot;SVM&quot;)</span>
+<span class="sd">    :param data: categorical datasets</span>
+<span class="sd">    :return: label encoded data, lable encoder object</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    
     <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="c1"># If the data type of the cell is &#39;object&#39;(Categorical), it will be transformed as a numerical </span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -361,6 +379,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Preprocessing</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Preprocessing function first separate datasets as input features(x) and class type &#39;result&#39;(y) respectively.</span>
+<span class="sd">    And split dataset into train and test using splitter.</span>
+<span class="sd">    </span>
+<span class="sd">    :param model_name: model name used in this project (e.g. &quot;SVM&quot;)</span>
+<span class="sd">    :param data: categorical datasets</span>
+<span class="sd">    :return: x_train, x_test, y_train, y_test</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">result</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     
@@ -375,6 +400,18 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;train_and_test function train the proposed model with the train dataset</span>
+<span class="sd">    And test it with test dataset</span>
+<span class="sd">    Additionally it will finalize the model to be used in the product. </span>
+<span class="sd">    </span>
+<span class="sd">    :param model_name: model name used in this project (e.g. &quot;SVM&quot;)</span>
+<span class="sd">    :param x_train: train input features</span>
+<span class="sd">    :param y_train: train label</span>
+<span class="sd">    :param x_test: test input features</span>
+<span class="sd">    :param y_test: test label    </span>
+<span class="sd">    :return: model, y_pred is prediced lables from the model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="c1"># Profile: Start </span>
     <span class="n">profile</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
     <span class="n">profile</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
@@ -404,6 +441,19 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;report function evaluates the quality of the output of a classifier on this data set.</span>
+<span class="sd">    We can get the value of Precision, Recall,, F1-Score, Support, accuracy by Lables </span>
+<span class="sd">    And it can get Multiclass AUC score multiclass using roc_auc_score_multiclass function</span>
+<span class="sd">    Additionally, it draws Bar graph about comparison between labels in each metrics (precision, recall, f1-score, AUC)</span>
+<span class="sd">    All are saved as a file</span>
+<span class="sd">    </span>
+<span class="sd">    :param model_name: model name used in this project (e.g. &quot;SVM&quot;)</span>
+<span class="sd">    :param y_test: test label    </span>
+<span class="sd">    :param y_pred: test label    </span>
+<span class="sd">    :param le: None or Label encoder    </span>
+<span class="sd">    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="c1"># Estimation: Confusion Matrix &amp; classification-report </span>
     <span class="n">_confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
     <span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -469,6 +519,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">roc_auc_score_multiclass</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s2">&quot;macro&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;roc_auc_score_multiclass function evaluate the multiclass output as a ROC AUC score.</span>
+<span class="sd">    </span>
+<span class="sd">    :param y_test: test label    </span>
+<span class="sd">    :param y_pred: test label    </span>
+<span class="sd">    :param average: &quot;macro&quot; or Label encoder    </span>
+<span class="sd">    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="c1">#creating a set of all the unique classes using the actual class list</span>
     <span class="n">unique_class</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
     <span class="n">roc_auc_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -491,142 +549,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;randomforest_kdd&#39;</span>
-<span class="c1"># model_name = &#39;randomforest_nsl_kdd&#39;</span>
-<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;kdd_prediction&#39;</span>
-<span class="c1"># dataset_name = &#39;kdd_prediction_NSL&#39;</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/&#39;</span> <span class="o">+</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;bound method NDFrame.head of        duration protocol_type   service  flag  src_bytes  dst_bytes      land  \
-0     -0.106216           tcp      smtp    SF  -0.003736  -0.040352 -0.011722   
-1     -0.107850           tcp      http    SF  -0.004276  -0.036652 -0.011722   
-2     -0.107850           tcp      http    SF  -0.004262   0.005956 -0.011722   
-3     -0.107033           tcp       ftp    SF  -0.003699  -0.006723 -0.011722   
-4     -0.107850           udp  domain_u    SF  -0.004368  -0.044940 -0.011722   
-...         ...           ...       ...   ...        ...        ...       ...   
-13446 -0.107850           tcp      http    SF  -0.004225   0.049683 -0.011722   
-13447 -0.107850           tcp      nntp  RSTO  -0.004392  -0.047028 -0.011722   
-13448 -0.107033           tcp      smtp    SF  -0.003734  -0.041519 -0.011722   
-13449 -0.107850           tcp      nnsp   REJ  -0.004392  -0.047028 -0.011722   
-13450 -0.107850           tcp      link    S0  -0.004392  -0.047028 -0.011722   
-
-       wrong_fragment    urgent        hot  ...  num_compromised  root_shell  \
-0           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-1           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-2           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-3           -0.084394 -0.004737  19.554084  ...        -0.007905    -0.01944   
-4           -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-...               ...       ...        ...  ...              ...         ...   
-13446       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-13447       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-13448       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-13449       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-13450       -0.084394 -0.004737  -0.070210  ...        -0.007905    -0.01944   
-
-       su_attempted  num_root  num_file_creations  num_shells  \
-0         -0.008613  -0.01039           -0.020694   -0.018274   
-1         -0.008613  -0.01039           -0.020694   -0.018274   
-2         -0.008613  -0.01039           -0.020694   -0.018274   
-3         -0.008613  -0.01039           -0.020694   -0.018274   
-4         -0.008613  -0.01039           -0.020694   -0.018274   
-...             ...       ...                 ...         ...   
-13446     -0.008613  -0.01039           -0.020694   -0.018274   
-13447     -0.008613  -0.01039           -0.020694   -0.018274   
-13448     -0.008613  -0.01039           -0.020694   -0.018274   
-13449     -0.008613  -0.01039           -0.020694   -0.018274   
-13450     -0.008613  -0.01039           -0.020694   -0.018274   
-
-       num_access_files  is_guest_login     count  result  
-0             -0.050883       -0.068756 -0.731403  normal  
-1             -0.050883       -0.068756 -0.681570  normal  
-2             -0.050883       -0.068756 -0.711470  normal  
-3             -0.050883       14.544119 -0.731403     r2l  
-4             -0.050883       -0.068756 -0.302843  normal  
-...                 ...             ...       ...     ...  
-13446         -0.050883       -0.068756 -0.243044  normal  
-13447         -0.050883       -0.068756  0.484511     dos  
-13448         -0.050883       -0.068756 -0.731403  normal  
-13449         -0.050883       -0.068756  0.265248     dos  
-13450         -0.050883       -0.068756  1.929653     dos  
-
-[13451 rows x 22 columns]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># labeling</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocessing</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Preprocessing</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train and Test</span>
-<span class="n">model</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="c1"># Report</span>
-<span class="n">cm</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
-
-[[1489    2   34    0    0]
- [   0 2241    0    1    0]
- [  26    1  104    1    0]
- [   0    5    0  117    1]
- [   0    3    1    2    8]]
-
------Classification Report-----
-
-              precision    recall  f1-score   support
-
-         dos       0.98      0.98      0.98      1525
-      normal       1.00      1.00      1.00      2242
-       probe       0.75      0.79      0.77       132
-         r2l       0.97      0.95      0.96       123
-         u2r       0.89      0.57      0.70        14
-
-    accuracy                           0.98      4036
-   macro avg       0.92      0.86      0.88      4036
-weighted avg       0.98      0.98      0.98      4036
-
-
------AUC Dictionary-----
-
-{&#39;dos&#39;: 0.9830195010804919, &#39;normal&#39;: 0.9967112100300637, &#39;probe&#39;: 0.8894568119721808, &#39;r2l&#39;: 0.9750986393073744, &#39;u2r&#39;: 0.7855899694537188}
-</pre></div>
-</div>
-<img alt="../../../_images/randomforest_model_10_1.png" src="../../../_images/randomforest_model_10_1.png" />
-<img alt="../../../_images/randomforest_model_10_2.png" src="../../../_images/randomforest_model_10_2.png" />
-<img alt="../../../_images/randomforest_model_10_3.png" src="../../../_images/randomforest_model_10_3.png" />
-<img alt="../../../_images/randomforest_model_10_4.png" src="../../../_images/randomforest_model_10_4.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;production function receive real network traffic data from the product </span>
+<span class="sd">    And classify it with saved label encoder and the model</span>
+<span class="sd">    </span>
+<span class="sd">    :param model_name: model name    </span>
+<span class="sd">    :param data: real dataset     </span>
+<span class="sd">    :return: pred_label, real_label</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">real_data</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">real_y</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">result</span>
     <span class="n">real_x</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -643,14 +573,107 @@ weighted avg       0.98      0.98      0.98      4036
 </div>
 </div>
 </div>
+<p>Run main program</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Production</span>
-<span class="n">real_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/kdd_prediction.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
-<span class="n">real_data</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    
+    <span class="sd">&quot;&quot;&quot;Receive Input datasets&quot;&quot;&quot;</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;randomforest_kdd&#39;</span>
+    <span class="c1"># model_name = &#39;randomforest_nsl_kdd&#39;</span>
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;kdd_prediction&#39;</span>
+    <span class="c1"># dataset_name = &#39;kdd_prediction_NSL&#39;</span>
 
-<span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span> <span class="o">=</span> <span class="n">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">real_data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/&#39;</span> <span class="o">+</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<span class="c1">#     print(data.head)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Label Encoding for categorical datasets&quot;&quot;&quot;</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">labelEncoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Pre-processing&quot;&quot;&quot;</span>
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Preprocessing</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Train and Test&quot;&quot;&quot;</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Report&quot;&quot;&quot;</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
+
+[[1490    1   18    0    0]
+ [   0 2258    0    2    2]
+ [  25    3  107    0    0]
+ [   0    4    0  106    5]
+ [   0    2    0    0   13]]
+
+-----Classification Report-----
+
+              precision    recall  f1-score   support
+
+         dos       0.98      0.99      0.99      1509
+      normal       1.00      1.00      1.00      2262
+       probe       0.86      0.79      0.82       135
+         r2l       0.98      0.92      0.95       115
+         u2r       0.65      0.87      0.74        15
+
+    accuracy                           0.98      4036
+   macro avg       0.89      0.91      0.90      4036
+weighted avg       0.98      0.98      0.98      4036
+
+
+-----AUC Dictionary-----
+
+{&#39;dos&#39;: 0.98875786305777, &#39;normal&#39;: 0.9962973374122929, &#39;probe&#39;: 0.8939891955528972, &#39;r2l&#39;: 0.9606145282370291, &#39;u2r&#39;: 0.9324629030920999}
+</pre></div>
+</div>
+<img alt="../../../_images/randomforest_model_13_1.png" src="../../../_images/randomforest_model_13_1.png" />
+<img alt="../../../_images/randomforest_model_13_2.png" src="../../../_images/randomforest_model_13_2.png" />
+<img alt="../../../_images/randomforest_model_13_3.png" src="../../../_images/randomforest_model_13_3.png" />
+<img alt="../../../_images/randomforest_model_13_4.png" src="../../../_images/randomforest_model_13_4.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="test-in-product">
+<h1>Test in Product<a class="headerlink" href="#test-in-product" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Production&quot;&quot;&quot;</span>
+
+    <span class="n">real_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset/kdd_prediction.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;protocol_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+    <span class="n">real_data</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span> <span class="o">=</span> <span class="n">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">real_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -658,7 +681,6 @@ weighted avg       0.98      0.98      0.98      4036
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
 [&#39;normal&#39;] [&#39;normal&#39;]
 </pre></div>
-</div>
 </div>
 </div>
 </div>

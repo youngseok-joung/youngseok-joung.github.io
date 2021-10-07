@@ -7,7 +7,7 @@
 # > I can classify real objects in real world by my eyes and hands.
 # > How about entangible things like numbers, positions, attributes, types
 # 
-# ### Which shape is the best in a specific Dimension?
+# ### Which position is the best in a specific Dimension?
 # 
 # 1. How could we devide two points in a 1D by a point?
 # Imagine that if there are different two points in a line.
@@ -29,7 +29,7 @@
 # 1. The place Where it is the middle of the two points.
 # 
 # 
-# ## Support-vector classification
+# ## Support vector classification
 # More formally, a support-vector machine **constructs a hyperplane** or set of hyperplanes in a high- or infinite-dimensional space, which can be used for classification, regression, or other tasks like outliers detection.[3] 
 # 
 # > Intuitively, a good separation is achieved by *he hyperplane that has the largest distance to the nearest training-data point of any class (so-called functional margin), since in general the larger the margin, the lower the generalization error of the classifier.[4]
@@ -65,9 +65,7 @@
 # In[1]:
 
 
-"""svm_model.py: 
-
-This model is the implementation of Classification of KDD datasets.
+"""svm_model.py: This model is the implementation of Classification of KDD datasets.
 """
 
 __author__ = 'Youngseok Joung'
@@ -98,6 +96,14 @@ from joblib import dump, load
 
 
 def labelEncoding(model_name, data):
+    """labelEncoding function replace the categorical valeu with a numberic value from 0 and the number of classes -1.
+    Also, the label encoder object is saved as a file using Pickle package to be recalled after classification.
+
+    :param model_name: model name used in this project (e.g. "SVM")
+    :param data: categorical datasets
+    :return: label encoded data, lable encoder object
+    """ 
+    
     for column in data.columns:
         # If the data type of the cell is 'object'(Categorical), it will be transformed as a numerical 
         if data[column].dtype == type(object):
@@ -124,6 +130,13 @@ def labelEncoding(model_name, data):
 
 
 def Preprocessing(model_name, data):
+    """Preprocessing function first separate datasets as input features(x) and class type 'result'(y) respectively.
+    And split dataset into train and test using splitter.
+    
+    :param model_name: model name used in this project (e.g. "SVM")
+    :param data: categorical datasets
+    :return: x_train, x_test, y_train, y_test
+    """
     y = data.result
     x = data.drop('result', axis=1)
     
@@ -137,6 +150,18 @@ def Preprocessing(model_name, data):
 
 
 def train_and_test(model_name, x_train, x_test, y_train, y_test):
+    """train_and_test function train the proposed model with the train dataset
+    And test it with test dataset
+    Additionally it will finalize the model to be used in the product. 
+    
+    :param model_name: model name used in this project (e.g. "SVM")
+    :param x_train: train input features
+    :param y_train: train label
+    :param x_test: test input features
+    :param y_test: test label    
+    :return: model, y_pred is prediced lables from the model
+    """
+
     # Profile: Start 
     profile = cProfile.Profile()
     profile.enable()
@@ -165,6 +190,19 @@ def train_and_test(model_name, x_train, x_test, y_train, y_test):
 
 
 def report(model_name, y_test, y_pred, le=None):
+    """report function evaluates the quality of the output of a classifier on this data set.
+    We can get the value of Precision, Recall,, F1-Score, Support, accuracy by Lables 
+    And it can get Multiclass AUC score multiclass using roc_auc_score_multiclass function
+    Additionally, it draws Bar graph about comparison between labels in each metrics (precision, recall, f1-score, AUC)
+    All are saved as a file
+    
+    :param model_name: model name used in this project (e.g. "SVM")
+    :param y_test: test label    
+    :param y_pred: test label    
+    :param le: None or Label encoder    
+    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
+    """
+    
     # Estimation: Confusion Matrix & classification-report 
     _confusion_matrix = confusion_matrix(y_test, y_pred)
     _classification_report = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=False)
@@ -229,6 +267,14 @@ def report(model_name, y_test, y_pred, le=None):
 
 
 def roc_auc_score_multiclass(y_test, y_pred, average = "macro"):
+    """roc_auc_score_multiclass function evaluate the multiclass output as a ROC AUC score.
+    
+    :param y_test: test label    
+    :param y_pred: test label    
+    :param average: "macro" or Label encoder    
+    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
+    """
+    
     #creating a set of all the unique classes using the actual class list
     unique_class = set(y_test)
     roc_auc_dict = {}
@@ -250,44 +296,14 @@ def roc_auc_score_multiclass(y_test, y_pred, average = "macro"):
 # In[7]:
 
 
-model_name = 'svm_kdd'
-# model_name = 'svm_nsl_kdd'
-dataset_name = 'kdd_prediction'
-# dataset_name = 'kdd_prediction_NSL'
-
-data = pd.read_csv('./dataset/' + dataset_name + '.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
-print(data.head)
-
-
-# In[8]:
-
-
-# labeling
-data, le = labelEncoding(model_name, data)
-
-
-# In[9]:
-
-
-# Preprocessing
-x_train, x_test, y_train, y_test = Preprocessing(model_name, data)
-
-
-# In[10]:
-
-
-# Train and Test
-model, y_pred = train_and_test(model_name, x_train, x_test, y_train, y_test)
-# Report
-cm, cr, auc, _ = report(model_name, y_test, y_pred, le)
-
-
-# # Test in Product 
-
-# In[11]:
-
-
 def production(model_name, data):
+    """production function receive real network traffic data from the product 
+    And classify it with saved label encoder and the model
+    
+    :param model_name: model name    
+    :param data: real dataset     
+    :return: pred_label, real_label
+    """
     real_data, le = labelEncoding(model_name, data)
     real_y = real_data.result
     real_x = real_data.drop('result', axis=1)
@@ -302,10 +318,58 @@ def production(model_name, data):
     return pred_label, real_label
 
 
+# # Run main program
+
+# In[8]:
+
+
+if __name__ == "__main__":
+    
+    """Receive Input datasets"""
+    model_name = 'svm_kdd'
+    # model_name = 'svm_nsl_kdd'
+    dataset_name = 'kdd_prediction'
+    # dataset_name = 'kdd_prediction_NSL'
+
+    data = pd.read_csv('./dataset/' + dataset_name + '.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
+#     print(data.head)
+
+
+# In[9]:
+
+
+"""Label Encoding for categorical datasets"""
+data, le = labelEncoding(model_name, data)
+
+
+# In[10]:
+
+
+"""Pre-processing"""
+x_train, x_test, y_train, y_test = Preprocessing(model_name, data)
+
+
+# In[11]:
+
+
+"""Train and Test"""
+model, y_pred = train_and_test(model_name, x_train, x_test, y_train, y_test)
+
+
 # In[12]:
 
 
-# Production
+"""Report"""
+cm, cr, auc, _ = report(model_name, y_test, y_pred, le)
+
+
+# # Test in Product 
+
+# In[13]:
+
+
+"""Production"""
+
 real_data = pd.read_csv('./dataset/kdd_prediction.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
 real_data = real_data.head(1)
 

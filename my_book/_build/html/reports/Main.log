@@ -101,7 +101,7 @@ principalDf.head()
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[1;32mC:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_13632/1690920269.py[0m in [0;36m<module>[1;34m[0m
+[1;32mC:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_14244/1690920269.py[0m in [0;36m<module>[1;34m[0m
 [0;32m     21[0m     "dst_host_rerror_rate","dst_host_srv_rerror_rate","label"]
 [0;32m     22[0m [1;33m[0m[0m
 [1;32m---> 23[1;33m [0mdf[0m [1;33m=[0m [0mpd[0m[1;33m.[0m[0mread_csv[0m[1;33m([0m[0mtrain_data[0m[1;33m,[0m [0mnames[0m[1;33m=[0m[0mnames[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m

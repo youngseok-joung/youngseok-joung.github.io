@@ -504,37 +504,35 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_16140/2709227883.py in &lt;module&gt;
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Train and Test</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_16140/2425710557.py</span> in <span class="ni">train_and_test</span><span class="nt">(model_name, x_train, x_test, y_train, y_test)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">CategoricalNB</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># Profile: End</span>
+[[1429   35    0    0    0]
+ [  18 2238    5   16    0]
+ [ 114   12   40    0    0]
+ [   3   16    0   93    0]
+ [   2    7    0    8    0]]
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>         <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_X</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">75</span>         <span class="n">jll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_joint_log_likelihood</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">jll</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span> 
+-----Classification Report-----
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\sklearn\naive_bayes.py</span> in <span class="ni">_joint_log_likelihood</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1301</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features_</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1302</span>             <span class="n">indices</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
-<span class="ne">-&gt; </span><span class="mi">1303</span>             <span class="n">jll</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_log_prob_</span><span class="p">[</span><span class="n">i</span><span class="p">][:,</span> <span class="n">indices</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-<span class="g g-Whitespace">   </span><span class="mi">1304</span>         <span class="n">total_ll</span> <span class="o">=</span> <span class="n">jll</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_log_prior_</span>
-<span class="g g-Whitespace">   </span><span class="mi">1305</span>         <span class="k">return</span> <span class="n">total_ll</span>
+              precision    recall  f1-score   support
 
-<span class="ne">IndexError</span>: index 20 is out of bounds for axis 1 with size 20
+           0       0.91      0.98      0.94      1464
+           1       0.97      0.98      0.98      2277
+           2       0.89      0.24      0.38       166
+           3       0.79      0.83      0.81       112
+           4       0.00      0.00      0.00        17
+
+    accuracy                           0.94      4036
+   macro avg       0.71      0.61      0.62      4036
+weighted avg       0.94      0.94      0.93      4036
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
 </pre></div>
 </div>
 </div>
@@ -566,6 +564,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 <span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span> <span class="o">=</span> <span class="n">production</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">real_data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;normal&#39;] [&#39;normal&#39;]
 </pre></div>
 </div>
 </div>
