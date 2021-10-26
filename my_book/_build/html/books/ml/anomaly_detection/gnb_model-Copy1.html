@@ -170,6 +170,21 @@ commentsRunWhenDOMLoaded(addUtterances);
      XGBoost
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gnb_model.html">
+     Gaussian naive bayes classifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmm_model.html">
+     Run Main Program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cnn_with_keras.html">
+     Analyzing a Dataset
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -535,25 +550,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[  75    5 1418    2    2]
- [1493  508  223   23    3]
- [   1    0  145    1    0]
- [   2    3    6  106    1]
- [   0    6    0    3   10]]
+[[  75    0 1409    8    3]
+ [1534  490  209   21    5]
+ [   1    0  157    1    0]
+ [   3    0    7   94    3]
+ [   0    2    2    1   11]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-           0       0.05      0.05      0.05      1502
-           1       0.97      0.23      0.37      2250
-           2       0.08      0.99      0.15       147
-           3       0.79      0.90      0.84       118
-           4       0.62      0.53      0.57        19
+           0       0.05      0.05      0.05      1495
+           1       1.00      0.22      0.36      2259
+           2       0.09      0.99      0.16       159
+           3       0.75      0.88      0.81       107
+           4       0.50      0.69      0.58        16
 
-    accuracy                           0.21      4036
-   macro avg       0.50      0.54      0.39      4036
-weighted avg       0.59      0.21      0.26      4036
+    accuracy                           0.20      4036
+   macro avg       0.48      0.56      0.39      4036
+weighted avg       0.60      0.20      0.25      4036
 </pre></div>
 </div>
 </div>

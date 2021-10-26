@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyzing a Dataset &#8212; Space Nomads</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/youngseok-joung/youngseok-joung.github.io.git");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Run Main Program" href="gmm_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Space Nomads</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Welcome to Space Nomads
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Math
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../math/content.html">
+   Latex Math reference
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Anomaly Detection
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm_model.html">
+     Support-vector machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforest_model.html">
+     Randomforest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xgboost_model.html">
+     XGBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gnb_model.html">
+     Gaussian naive bayes classifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmm_model.html">
+     Run Main Program
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analyzing a Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/books/ml/anomaly_detection/cnn_with_keras.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/youngseokjoung/My Book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/ml/anomaly_detection/cnn_with_keras.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/youngseokjoung/My Book/main?urlpath=tree/docs/books/ml/anomaly_detection/cnn_with_keras.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Analyzing a Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encode-the-feature-vector">
+   Encode the feature vector
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-the-neural-network">
+   Train the Neural Network
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="c1"># from tensorflow.keras.utils import get_file</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="s1">&#39;kddcup.data_10_percent.gz&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span>
+    <span class="s1">&#39;http://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error downloading&#39;</span><span class="p">)</span>
+    <span class="k">raise</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> 
+
+<span class="c1"># This file is a CSV, just no CSV extension or headers</span>
+<span class="c1"># Download from: http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read </span><span class="si">{}</span><span class="s2"> rows.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)))</span>
+<span class="c1"># df = df.sample(frac=0.1, replace=False) # Uncomment this line to </span>
+<span class="c1"># sample only 10% of the dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># For now, just drop NA&#39;s </span>
+<span class="c1"># (rows with missing values)</span>
+
+<span class="c1"># The CSV file has no column heads, so add them</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;duration&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;protocol_type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;service&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;flag&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;src_bytes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_bytes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;land&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wrong_fragment&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;urgent&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;hot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_failed_logins&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;logged_in&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_compromised&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;root_shell&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;su_attempted&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_root&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_file_creations&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_shells&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_access_files&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_outbound_cmds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;is_host_login&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;is_guest_login&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;count&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;srv_count&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;serror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;srv_serror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rerror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;srv_rerror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;same_srv_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;diff_srv_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;srv_diff_host_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_count&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_srv_count&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_same_srv_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_diff_srv_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_same_src_port_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_srv_diff_host_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_serror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_srv_serror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_rerror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dst_host_srv_rerror_rate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;outcome&#39;</span>
+<span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1"># display 5 rows</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.keras\datasets\kddcup.data_10_percent.gz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Read 494021 rows.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration</th>
+      <th>protocol_type</th>
+      <th>...</th>
+      <th>dst_host_srv_rerror_rate</th>
+      <th>outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>normal.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>normal.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>normal.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>normal.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>normal.</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 42 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="analyzing-a-dataset">
+<h1>Analyzing a Dataset<a class="headerlink" href="#analyzing-a-dataset" title="Permalink to this headline">¶</a></h1>
+<p>Before we preprocess the KDD99 dataset let’s have a look at the individual columns and distributions. You can use the following script to give a high-level overview of how a dataset appears.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+
+<span class="k">def</span> <span class="nf">expand_categories</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">/</span><span class="n">t</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+        
+<span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> rows&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">total</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+        <span class="n">uniques</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+        <span class="n">unique_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">unique_count</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** </span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">%)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="n">unique_count</span><span class="p">,</span><span class="nb">int</span><span class="p">(((</span><span class="n">unique_count</span><span class="p">)</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** </span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="n">expand_categories</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])))</span>
+            <span class="n">expand_categories</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analyze KDD-99</span>
+<span class="n">analyze</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>494021 rows
+** duration:2495 (0%)
+** protocol_type:[icmp:57.41%,tcp:38.47%,udp:4.12%]
+** service:[ecr_i:56.96%,private:22.45%,http:13.01%,smtp:1.97%,other:1.46%,domain_u:1.19%,ftp_data:0.96%,eco_i:0.33%,ftp:0.16%,finger:0.14%,urp_i:0.11%,telnet:0.1%,ntp_u:0.08%,auth:0.07%,pop_3:0.04%,time:0.03%,csnet_ns:0.03%,remote_job:0.02%,gopher:0.02%,imap4:0.02%,discard:0.02%,domain:0.02%,iso_tsap:0.02%,systat:0.02%,shell:0.02%,echo:0.02%,rje:0.02%,whois:0.02%,sql_net:0.02%,printer:0.02%,nntp:0.02%,courier:0.02%,sunrpc:0.02%,netbios_ssn:0.02%,mtp:0.02%,vmnet:0.02%,uucp_path:0.02%,uucp:0.02%,klogin:0.02%,bgp:0.02%,ssh:0.02%,supdup:0.02%,nnsp:0.02%,login:0.02%,hostnames:0.02%,efs:0.02%,daytime:0.02%,link:0.02%,netbios_ns:0.02%,pop_2:0.02%,ldap:0.02%,netbios_dgm:0.02%,exec:0.02%,http_443:0.02%,kshell:0.02%,name:0.02%,ctf:0.02%,netstat:0.02%,Z39_50:0.02%,IRC:0.01%,urh_i:0.0%,X11:0.0%,tim_i:0.0%,pm_dump:0.0%,tftp_u:0.0%,red_i:0.0%]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** flag:[SF:76.6%,S0:17.61%,REJ:5.44%,RSTR:0.18%,RSTO:0.12%,SH:0.02%,S1:0.01%,S2:0.0%,RSTOS0:0.0%,S3:0.0%,OTH:0.0%]
+** src_bytes:3300 (0%)
+** dst_bytes:10725 (2%)
+** land:[0:100.0%,1:0.0%]
+** wrong_fragment:[0:99.75%,3:0.2%,1:0.05%]
+** urgent:[0:100.0%,1:0.0%,2:0.0%,3:0.0%]
+** hot:[0:99.35%,2:0.44%,28:0.06%,1:0.05%,4:0.02%,6:0.02%,5:0.01%,3:0.01%,14:0.01%,30:0.01%,22:0.01%,19:0.0%,24:0.0%,18:0.0%,20:0.0%,7:0.0%,17:0.0%,12:0.0%,16:0.0%,10:0.0%,15:0.0%,9:0.0%]
+** num_failed_logins:[0:99.99%,1:0.01%,2:0.0%,5:0.0%,4:0.0%,3:0.0%]
+** logged_in:[0:85.18%,1:14.82%]
+** num_compromised:[0:99.55%,1:0.44%,2:0.0%,4:0.0%,3:0.0%,6:0.0%,5:0.0%,7:0.0%,767:0.0%,12:0.0%,9:0.0%,884:0.0%,13:0.0%,38:0.0%,18:0.0%,11:0.0%,275:0.0%,281:0.0%,16:0.0%,238:0.0%,21:0.0%,22:0.0%,102:0.0%]
+** root_shell:[0:99.99%,1:0.01%]
+** su_attempted:[0:100.0%,1:0.0%,2:0.0%]
+** num_root:[0:99.88%,1:0.05%,9:0.03%,6:0.03%,2:0.0%,5:0.0%,4:0.0%,3:0.0%,7:0.0%,993:0.0%,54:0.0%,306:0.0%,14:0.0%,39:0.0%,278:0.0%,268:0.0%,12:0.0%,857:0.0%,16:0.0%,119:0.0%]
+** num_file_creations:[0:99.95%,1:0.04%,2:0.01%,4:0.0%,16:0.0%,5:0.0%,22:0.0%,25:0.0%,12:0.0%,8:0.0%,7:0.0%,21:0.0%,14:0.0%,10:0.0%,28:0.0%,9:0.0%,15:0.0%,20:0.0%]
+** num_shells:[0:99.99%,1:0.01%,2:0.0%]
+** num_access_files:[0:99.91%,1:0.09%,2:0.01%,3:0.0%,4:0.0%,6:0.0%,8:0.0%]
+** num_outbound_cmds:[0:100.0%]
+** is_host_login:[0:100.0%]
+** is_guest_login:[0:99.86%,1:0.14%]
+** count:490 (0%)
+** srv_count:470 (0%)
+** serror_rate:[0.0:81.94%,1.0:17.52%,0.99:0.06%,0.08:0.03%,0.05:0.03%,0.06:0.03%,0.07:0.03%,0.14:0.02%,0.04:0.02%,0.01:0.02%,0.09:0.02%,0.1:0.02%,0.03:0.02%,0.11:0.02%,0.13:0.02%,0.5:0.02%,0.12:0.02%,0.2:0.01%,0.25:0.01%,0.02:0.01%,0.17:0.01%,0.33:0.01%,0.15:0.01%,0.22:0.01%,0.18:0.01%,0.23:0.01%,0.16:0.01%,0.21:0.01%,0.19:0.0%,0.27:0.0%,0.98:0.0%,0.29:0.0%,0.44:0.0%,0.24:0.0%,0.97:0.0%,0.31:0.0%,0.96:0.0%,0.26:0.0%,0.79:0.0%,0.28:0.0%,0.36:0.0%,0.94:0.0%,0.95:0.0%,0.65:0.0%,0.67:0.0%,0.85:0.0%,0.64:0.0%,0.62:0.0%,0.6:0.0%,0.53:0.0%,0.81:0.0%,0.88:0.0%,0.93:0.0%,0.57:0.0%,0.55:0.0%,0.58:0.0%,0.56:0.0%,0.52:0.0%,0.51:0.0%,0.66:0.0%,0.75:0.0%,0.3:0.0%,0.83:0.0%,0.71:0.0%,0.78:0.0%,0.63:0.0%,0.68:0.0%,0.86:0.0%,0.54:0.0%,0.61:0.0%,0.74:0.0%,0.72:0.0%,0.69:0.0%,0.59:0.0%,0.38:0.0%,0.84:0.0%,0.35:0.0%,0.76:0.0%,0.42:0.0%,0.82:0.0%,0.77:0.0%,0.32:0.0%,0.7:0.0%,0.4:0.0%,0.73:0.0%,0.91:0.0%,0.92:0.0%,0.87:0.0%,0.8:0.0%,0.9:0.0%,0.34:0.0%,0.89:0.0%]
+** srv_serror_rate:[0.0:82.12%,1.0:17.62%,0.03:0.03%,0.04:0.02%,0.05:0.02%,0.06:0.02%,0.02:0.02%,0.5:0.02%,0.08:0.01%,0.07:0.01%,0.25:0.01%,0.33:0.01%,0.17:0.01%,0.09:0.01%,0.1:0.01%,0.2:0.01%,0.12:0.01%,0.11:0.01%,0.14:0.01%,0.01:0.0%,0.67:0.0%,0.18:0.0%,0.92:0.0%,0.95:0.0%,0.94:0.0%,0.88:0.0%,0.19:0.0%,0.58:0.0%,0.75:0.0%,0.83:0.0%,0.76:0.0%,0.15:0.0%,0.91:0.0%,0.4:0.0%,0.85:0.0%,0.27:0.0%,0.22:0.0%,0.93:0.0%,0.16:0.0%,0.38:0.0%,0.36:0.0%,0.35:0.0%,0.45:0.0%,0.21:0.0%,0.44:0.0%,0.23:0.0%,0.51:0.0%,0.86:0.0%,0.9:0.0%,0.8:0.0%,0.37:0.0%]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** rerror_rate:[0.0:94.12%,1.0:5.46%,0.86:0.02%,0.87:0.02%,0.92:0.02%,0.25:0.02%,0.9:0.02%,0.95:0.02%,0.5:0.02%,0.91:0.02%,0.88:0.01%,0.96:0.01%,0.33:0.01%,0.2:0.01%,0.93:0.01%,0.94:0.01%,0.01:0.01%,0.89:0.01%,0.85:0.01%,0.99:0.01%,0.82:0.01%,0.77:0.01%,0.17:0.01%,0.97:0.01%,0.02:0.01%,0.98:0.01%,0.03:0.01%,0.78:0.01%,0.8:0.01%,0.76:0.01%,0.79:0.0%,0.84:0.0%,0.75:0.0%,0.14:0.0%,0.05:0.0%,0.73:0.0%,0.81:0.0%,0.83:0.0%,0.71:0.0%,0.06:0.0%,0.67:0.0%,0.56:0.0%,0.08:0.0%,0.04:0.0%,0.1:0.0%,0.12:0.0%,0.09:0.0%,0.07:0.0%,0.11:0.0%,0.69:0.0%,0.4:0.0%,0.64:0.0%,0.7:0.0%,0.72:0.0%,0.74:0.0%,0.6:0.0%,0.29:0.0%,0.62:0.0%,0.65:0.0%,0.21:0.0%,0.22:0.0%,0.37:0.0%,0.58:0.0%,0.68:0.0%,0.19:0.0%,0.43:0.0%,0.35:0.0%,0.36:0.0%,0.23:0.0%,0.26:0.0%,0.27:0.0%,0.28:0.0%,0.66:0.0%,0.31:0.0%,0.32:0.0%,0.34:0.0%,0.24:0.0%]
+** srv_rerror_rate:[0.0:93.99%,1.0:5.69%,0.33:0.05%,0.5:0.04%,0.25:0.04%,0.2:0.03%,0.17:0.03%,0.14:0.01%,0.04:0.01%,0.03:0.01%,0.12:0.01%,0.06:0.01%,0.02:0.01%,0.05:0.01%,0.07:0.01%,0.4:0.01%,0.67:0.01%,0.08:0.01%,0.11:0.01%,0.29:0.01%,0.09:0.0%,0.1:0.0%,0.75:0.0%,0.6:0.0%,0.01:0.0%,0.71:0.0%,0.22:0.0%,0.83:0.0%,0.86:0.0%,0.18:0.0%,0.96:0.0%,0.79:0.0%,0.43:0.0%,0.92:0.0%,0.81:0.0%,0.88:0.0%,0.73:0.0%,0.69:0.0%,0.94:0.0%,0.62:0.0%,0.8:0.0%,0.85:0.0%,0.93:0.0%,0.82:0.0%,0.27:0.0%,0.37:0.0%,0.21:0.0%,0.38:0.0%,0.87:0.0%,0.95:0.0%,0.13:0.0%]
+** same_srv_rate:[1.0:77.34%,0.06:2.27%,0.05:2.14%,0.04:2.06%,0.07:2.03%,0.03:1.93%,0.02:1.9%,0.01:1.77%,0.08:1.48%,0.09:1.01%,0.1:0.8%,0.0:0.73%,0.12:0.73%,0.11:0.67%,0.13:0.66%,0.14:0.51%,0.15:0.35%,0.5:0.29%,0.16:0.25%,0.17:0.17%,0.33:0.12%,0.18:0.1%,0.2:0.08%,0.19:0.07%,0.67:0.05%,0.25:0.04%,0.21:0.04%,0.99:0.03%,0.22:0.03%,0.24:0.02%,0.23:0.02%,0.4:0.02%,0.98:0.02%,0.75:0.02%,0.27:0.02%,0.26:0.01%,0.8:0.01%,0.29:0.01%,0.38:0.01%,0.86:0.01%,0.3:0.01%,0.31:0.01%,0.44:0.01%,0.36:0.01%,0.83:0.01%,0.28:0.01%,0.43:0.01%,0.42:0.01%,0.6:0.01%,0.97:0.01%,0.32:0.01%,0.35:0.01%,0.45:0.01%,0.47:0.01%,0.88:0.0%,0.48:0.0%,0.39:0.0%,0.46:0.0%,0.52:0.0%,0.37:0.0%,0.41:0.0%,0.89:0.0%,0.34:0.0%,0.92:0.0%,0.54:0.0%,0.53:0.0%,0.95:0.0%,0.94:0.0%,0.57:0.0%,0.56:0.0%,0.96:0.0%,0.64:0.0%,0.71:0.0%,0.62:0.0%,0.78:0.0%,0.9:0.0%,0.49:0.0%,0.55:0.0%,0.91:0.0%,0.65:0.0%,0.73:0.0%,0.58:0.0%,0.93:0.0%,0.59:0.0%,0.82:0.0%,0.51:0.0%,0.81:0.0%,0.76:0.0%,0.77:0.0%,0.79:0.0%,0.74:0.0%,0.85:0.0%,0.72:0.0%,0.7:0.0%,0.68:0.0%,0.69:0.0%,0.87:0.0%,0.63:0.0%,0.61:0.0%]
+** diff_srv_rate:[0.0:77.33%,0.06:10.69%,0.07:5.83%,0.05:3.89%,0.08:0.66%,1.0:0.48%,0.04:0.19%,0.67:0.13%,0.5:0.12%,0.09:0.08%,0.6:0.06%,0.12:0.05%,0.1:0.04%,0.11:0.04%,0.14:0.03%,0.4:0.02%,0.13:0.02%,0.29:0.02%,0.01:0.02%,0.15:0.02%,0.03:0.02%,0.33:0.02%,0.25:0.02%,0.17:0.02%,0.75:0.01%,0.2:0.01%,0.18:0.01%,0.16:0.01%,0.19:0.01%,0.02:0.01%,0.22:0.01%,0.21:0.01%,0.27:0.01%,0.96:0.01%,0.31:0.01%,0.38:0.01%,0.24:0.01%,0.23:0.01%,0.43:0.0%,0.52:0.0%,0.44:0.0%,0.95:0.0%,0.36:0.0%,0.8:0.0%,0.53:0.0%,0.57:0.0%,0.42:0.0%,0.3:0.0%,0.26:0.0%,0.28:0.0%,0.56:0.0%,0.99:0.0%,0.54:0.0%,0.62:0.0%,0.37:0.0%,0.41:0.0%,0.35:0.0%,0.55:0.0%,0.47:0.0%,0.32:0.0%,0.46:0.0%,0.39:0.0%,0.58:0.0%,0.71:0.0%,0.89:0.0%,0.51:0.0%,0.45:0.0%,0.97:0.0%,0.73:0.0%,0.69:0.0%,0.78:0.0%,0.7:0.0%,0.74:0.0%,0.82:0.0%,0.86:0.0%,0.64:0.0%,0.83:0.0%,0.88:0.0%]
+** srv_diff_host_rate:[0.0:92.99%,1.0:1.64%,0.12:0.31%,0.5:0.29%,0.67:0.29%,0.33:0.25%,0.11:0.24%,0.25:0.23%,0.1:0.22%,0.14:0.21%,0.17:0.21%,0.08:0.2%,0.15:0.2%,0.18:0.19%,0.2:0.19%,0.09:0.19%,0.4:0.19%,0.07:0.17%,0.29:0.17%,0.13:0.16%,0.22:0.16%,0.06:0.14%,0.02:0.1%,0.05:0.1%,0.01:0.08%,0.21:0.08%,0.19:0.08%,0.16:0.07%,0.75:0.07%,0.27:0.06%,0.04:0.06%,0.6:0.06%,0.3:0.06%,0.38:0.05%,0.43:0.05%,0.23:0.05%,0.03:0.03%,0.24:0.02%,0.36:0.02%,0.31:0.02%,0.8:0.02%,0.57:0.01%,0.44:0.01%,0.28:0.01%,0.26:0.01%,0.42:0.0%,0.45:0.0%,0.62:0.0%,0.83:0.0%,0.71:0.0%,0.56:0.0%,0.35:0.0%,0.32:0.0%,0.37:0.0%,0.47:0.0%,0.41:0.0%,0.86:0.0%,0.55:0.0%,0.64:0.0%,0.54:0.0%,0.46:0.0%,0.88:0.0%,0.7:0.0%,0.77:0.0%]
+** dst_host_count:256 (0%)
+** dst_host_srv_count:256 (0%)
+** dst_host_same_srv_rate:101 (0%)
+** dst_host_diff_srv_rate:101 (0%)
+** dst_host_same_src_port_rate:101 (0%)
+** dst_host_srv_diff_host_rate:[0.0:89.45%,0.02:2.38%,0.01:2.13%,0.04:1.35%,0.03:1.34%,0.05:0.94%,0.06:0.39%,0.07:0.31%,0.5:0.15%,0.08:0.14%,0.09:0.13%,0.15:0.09%,0.11:0.09%,0.16:0.08%,0.13:0.08%,0.1:0.08%,0.14:0.07%,1.0:0.07%,0.17:0.07%,0.2:0.07%,0.12:0.07%,0.18:0.07%,0.25:0.05%,0.22:0.05%,0.19:0.05%,0.21:0.05%,0.24:0.03%,0.23:0.02%,0.26:0.02%,0.27:0.02%,0.33:0.02%,0.29:0.02%,0.51:0.02%,0.4:0.01%,0.28:0.01%,0.3:0.01%,0.67:0.01%,0.52:0.01%,0.31:0.01%,0.32:0.01%,0.38:0.01%,0.53:0.0%,0.43:0.0%,0.44:0.0%,0.34:0.0%,0.6:0.0%,0.36:0.0%,0.57:0.0%,0.35:0.0%,0.54:0.0%,0.37:0.0%,0.56:0.0%,0.55:0.0%,0.42:0.0%,0.46:0.0%,0.39:0.0%,0.45:0.0%,0.41:0.0%,0.48:0.0%,0.62:0.0%,0.8:0.0%,0.58:0.0%,0.75:0.0%,0.7:0.0%,0.47:0.0%]
+** dst_host_serror_rate:[0.0:80.93%,1.0:17.56%,0.01:0.74%,0.02:0.2%,0.03:0.09%,0.09:0.05%,0.04:0.04%,0.05:0.04%,0.07:0.03%,0.08:0.03%,0.06:0.02%,0.14:0.02%,0.15:0.02%,0.11:0.02%,0.13:0.02%,0.16:0.02%,0.1:0.02%,0.12:0.01%,0.18:0.01%,0.25:0.01%,0.2:0.01%,0.17:0.01%,0.33:0.01%,0.99:0.01%,0.19:0.01%,0.31:0.01%,0.27:0.01%,0.5:0.0%,0.22:0.0%,0.98:0.0%,0.35:0.0%,0.28:0.0%,0.24:0.0%,0.53:0.0%,0.96:0.0%,0.3:0.0%,0.94:0.0%,0.29:0.0%,0.26:0.0%,0.97:0.0%,0.42:0.0%,0.32:0.0%,0.6:0.0%,0.95:0.0%,0.56:0.0%,0.55:0.0%,0.23:0.0%,0.85:0.0%,0.93:0.0%,0.34:0.0%,0.89:0.0%,0.58:0.0%,0.21:0.0%,0.92:0.0%,0.57:0.0%,0.91:0.0%,0.9:0.0%,0.43:0.0%,0.82:0.0%,0.49:0.0%,0.36:0.0%,0.76:0.0%,0.47:0.0%,0.46:0.0%,0.62:0.0%,0.38:0.0%,0.45:0.0%,0.87:0.0%,0.61:0.0%,0.65:0.0%,0.41:0.0%,0.39:0.0%,0.44:0.0%,0.48:0.0%,0.52:0.0%,0.81:0.0%,0.77:0.0%,0.79:0.0%,0.73:0.0%,0.88:0.0%,0.69:0.0%,0.67:0.0%,0.54:0.0%,0.72:0.0%,0.68:0.0%,0.4:0.0%,0.64:0.0%,0.51:0.0%,0.84:0.0%,0.59:0.0%,0.7:0.0%,0.75:0.0%,0.8:0.0%,0.71:0.0%,0.83:0.0%,0.66:0.0%,0.74:0.0%,0.78:0.0%,0.86:0.0%,0.37:0.0%]
+** dst_host_srv_serror_rate:[0.0:81.16%,1.0:17.61%,0.01:0.99%,0.02:0.14%,0.03:0.03%,0.04:0.02%,0.05:0.01%,0.06:0.01%,0.08:0.0%,0.5:0.0%,0.07:0.0%,0.1:0.0%,0.09:0.0%,0.11:0.0%,0.17:0.0%,0.96:0.0%,0.33:0.0%,0.14:0.0%,0.12:0.0%,0.67:0.0%,0.97:0.0%,0.25:0.0%,0.98:0.0%,0.48:0.0%,0.75:0.0%,0.83:0.0%,0.4:0.0%,0.69:0.0%,0.8:0.0%,0.2:0.0%,0.91:0.0%,0.93:0.0%,0.78:0.0%,0.95:0.0%,0.16:0.0%,0.57:0.0%,0.94:0.0%,0.31:0.0%,0.92:0.0%,0.62:0.0%,0.88:0.0%,0.63:0.0%,0.29:0.0%,0.56:0.0%,0.3:0.0%,0.38:0.0%,0.32:0.0%,0.85:0.0%,0.68:0.0%,0.23:0.0%,0.15:0.0%,0.47:0.0%,0.52:0.0%,0.6:0.0%,0.24:0.0%,0.79:0.0%,0.74:0.0%,0.82:0.0%,0.64:0.0%,0.18:0.0%,0.13:0.0%,0.45:0.0%,0.66:0.0%,0.9:0.0%,0.42:0.0%,0.46:0.0%,0.86:0.0%,0.87:0.0%,0.84:0.0%,0.55:0.0%,0.81:0.0%,0.53:0.0%]
+** dst_host_rerror_rate:101 (0%)
+** dst_host_srv_rerror_rate:101 (0%)
+** outcome:[smurf.:56.84%,neptune.:21.7%,normal.:19.69%,back.:0.45%,satan.:0.32%,ipsweep.:0.25%,portsweep.:0.21%,warezclient.:0.21%,teardrop.:0.2%,pod.:0.05%,nmap.:0.05%,guess_passwd.:0.01%,buffer_overflow.:0.01%,land.:0.0%,warezmaster.:0.0%,imap.:0.0%,rootkit.:0.0%,loadmodule.:0.0%,ftp_write.:0.0%,multihop.:0.0%,phf.:0.0%,perl.:0.0%,spy.:0.0%]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="encode-the-feature-vector">
+<h1>Encode the feature vector<a class="headerlink" href="#encode-the-feature-vector" title="Permalink to this headline">¶</a></h1>
+<p>We use the same two functions provided earlier to preprocess the data. The first encodes Z-Scores, and the second creates dummy variables from categorical columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode a numeric column as zscores</span>
+<span class="k">def</span> <span class="nf">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mean</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">sd</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sd</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span>
+    
+<span class="c1"># Encode text values to dummy variables(i.e. [1,0,0],</span>
+<span class="c1"># [0,1,0],[0,0,1] for red,green,blue)</span>
+<span class="k">def</span> <span class="nf">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dummies</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">dummy_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">dummy_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">dummies</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now encode the feature vector</span>
+
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;protocol_type&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;flag&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;src_bytes&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_bytes&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;land&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;wrong_fragment&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;urgent&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;hot&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_failed_logins&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;logged_in&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_compromised&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;root_shell&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;su_attempted&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_root&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_file_creations&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_shells&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_access_files&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;num_outbound_cmds&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;is_host_login&#39;</span><span class="p">)</span>
+<span class="n">encode_text_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;is_guest_login&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;srv_count&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;serror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;srv_serror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;rerror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;srv_rerror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;same_srv_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;diff_srv_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;srv_diff_host_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_count&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_srv_count&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_same_srv_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_diff_srv_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_same_src_port_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_srv_diff_host_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_serror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_srv_serror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_rerror_rate&#39;</span><span class="p">)</span>
+<span class="n">encode_numeric_zscore</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;dst_host_srv_rerror_rate&#39;</span><span class="p">)</span>
+
+<span class="c1"># display 5 rows</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="c1"># This is the numeric feature vector, as it goes to the neural net</span>
+
+
+<span class="c1"># Convert to numpy - Classification</span>
+<span class="n">x_columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;outcome&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">x_columns</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">])</span> <span class="c1"># Classification</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;outcome&#39;</span><span class="p">)[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outcome
+back.               2203
+buffer_overflow.      30
+                    ... 
+warezclient.        1020
+warezmaster.          20
+Name: outcome, Length: 23, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-the-neural-network">
+<h1>Train the Neural Network<a class="headerlink" href="#train-the-neural-network" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span>
+
+<span class="c1"># Create a test/train split.  25% test</span>
+<span class="c1"># Split into train/test</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Create neural net</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span><span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">monitor</span><span class="p">],</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11579/11579 - 7s - loss: 0.2124 - val_loss: 0.0700
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2/1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11579/11579 - 9s - loss: 0.0598 - val_loss: 0.0618
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3/1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11579/11579 - 7s - loss: 0.0523 - val_loss: 0.0528
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4/1000
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+KeyboardInterrupt                         Traceback (most recent call last)
+C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_30188/2959030999.py in &lt;module&gt;
+     24 model.compile(loss=&#39;categorical_crossentropy&#39;, optimizer=&#39;adam&#39;)
+     25 monitor = EarlyStopping(monitor=&#39;val_loss&#39;, min_delta=1e-3, patience=5, verbose=1, mode=&#39;auto&#39;,restore_best_weights=True)
+---&gt; 26 model.fit(x_train,y_train,validation_data=(x_test,y_test), callbacks=[monitor],verbose=2,epochs=1000)
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\keras\engine\training.py in _method_wrapper(self, *args, **kwargs)
+    106   def _method_wrapper(self, *args, **kwargs):
+    107     if not self._in_multi_worker_mode():  # pylint: disable=protected-access
+--&gt; 108       return method(self, *args, **kwargs)
+    109 
+    110     # Running inside `run_distribute_coordinator` already.
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\keras\engine\training.py in fit(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)
+   1096                 batch_size=batch_size):
+   1097               callbacks.on_train_batch_begin(step)
+-&gt; 1098               tmp_logs = train_function(iterator)
+   1099               if data_handler.should_sync:
+   1100                 context.async_wait()
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\def_function.py in __call__(self, *args, **kwds)
+    778       else:
+    779         compiler = &quot;nonXla&quot;
+--&gt; 780         result = self._call(*args, **kwds)
+    781 
+    782       new_tracing_count = self._get_tracing_count()
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\def_function.py in _call(self, *args, **kwds)
+    805       # In this case we have created variables on the first call, so we run the
+    806       # defunned version which is guaranteed to never create variables.
+--&gt; 807       return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
+    808     elif self._stateful_fn is not None:
+    809       # Release the lock early so that multiple threads can perform the call
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\function.py in __call__(self, *args, **kwargs)
+   2827     with self._lock:
+   2828       graph_function, args, kwargs = self._maybe_define_function(args, kwargs)
+-&gt; 2829     return graph_function._filtered_call(args, kwargs)  # pylint: disable=protected-access
+   2830 
+   2831   @property
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\function.py in _filtered_call(self, args, kwargs, cancellation_manager)
+   1841       `args` and `kwargs`.
+   1842     &quot;&quot;&quot;
+-&gt; 1843     return self._call_flat(
+   1844         [t for t in nest.flatten((args, kwargs), expand_composites=True)
+   1845          if isinstance(t, (ops.Tensor,
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\function.py in _call_flat(self, args, captured_inputs, cancellation_manager)
+   1921         and executing_eagerly):
+   1922       # No tape is watching; skip to running the function.
+-&gt; 1923       return self._build_call_outputs(self._inference_function.call(
+   1924           ctx, args, cancellation_manager=cancellation_manager))
+   1925     forward_backward = self._select_forward_and_backward_functions(
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\function.py in call(self, ctx, args, cancellation_manager)
+    543       with _InterpolateFunctionError(self):
+    544         if cancellation_manager is None:
+--&gt; 545           outputs = execute.execute(
+    546               str(self.signature.name),
+    547               num_outputs=self._num_outputs,
+
+~\.conda\envs\mybook\lib\site-packages\tensorflow\python\eager\execute.py in quick_execute(op_name, num_outputs, inputs, attrs, ctx, name)
+     57   try:
+     58     ctx.ensure_initialized()
+---&gt; 59     tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+     60                                         inputs, attrs, num_outputs)
+     61   except core._NotOkStatusException as e:
+
+KeyboardInterrupt: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measure accuracy</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AxisError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_33076/3620219885.py in &lt;module&gt;
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">))</span>
+
+<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">argmax</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="nn">~\.conda\envs\mybook\lib\site-packages\numpy\core\fromnumeric.py</span> in <span class="ni">argmax</span><span class="nt">(a, axis, out)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1184</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1185</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1186</span><span class="s2">     return _wrapfunc(a, &#39;argmax&#39;, axis=axis, out=out)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1187</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1188</span><span class="s2"> </span>
+
+<span class="nn">~\.conda\envs\mybook\lib\site-packages\numpy\core\fromnumeric.py</span> in <span class="ni">_wrapfunc</span><span class="nt">(obj, method, *args, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">     try:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">         return bound(*args, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">     except TypeError:</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2">         # A TypeError occurs if the object does have such a method in its</span>
+
+<span class="ne">AxisError</span>: axis 1 is out of bounds for array of dimension 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="c1"># matrix = metrics.confusion_matrix(y_test.argmax(axis=1), y_pred.argmax(axis=1))</span>
+    
+<span class="c1"># Estimation: Confusion Matrix &amp; classification-report </span>
+<span class="c1"># _confusion_matrix = confusion_matrix(y_test, y_pred)</span>
+<span class="n">arr_outcomes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">arr_outcomes2</span> <span class="o">=</span> <span class="p">(</span><span class="n">arr_outcomes</span><span class="p">[:</span><span class="mi">19</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr_outcomes</span><span class="p">[</span><span class="mi">21</span><span class="p">:</span><span class="mi">23</span><span class="p">])</span>
+<span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">arr_outcomes2</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">_classification_report_dict</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">arr_outcomes2</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># print(_confusion_matrix)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
+
+           back.       0.64      1.00      0.78       541
+buffer_overflow.       0.00      0.00      0.00        11
+      ftp_write.       0.00      0.00      0.00         1
+   guess_passwd.       0.00      0.00      0.00        10
+           imap.       0.00      0.00      0.00         3
+        ipsweep.       0.90      0.97      0.93       324
+           land.       0.00      0.00      0.00         5
+     loadmodule.       0.00      0.00      0.00         2
+       multihop.       0.00      0.00      0.00         2
+        neptune.       1.00      1.00      1.00     26708
+           nmap.       0.00      0.00      0.00        52
+         normal.       1.00      1.00      1.00     24267
+           perl.       0.00      0.00      0.00         2
+            phf.       0.00      0.00      0.00        46
+            pod.       0.96      0.98      0.97       287
+      portsweep.       0.00      0.00      0.00         1
+        rootkit.       0.84      0.96      0.90       388
+          satan.       1.00      1.00      1.00     70336
+          smurf.       0.85      1.00      0.92       240
+    warezclient.       0.00      0.00      0.00       274
+    warezmaster.       0.00      0.00      0.00         6
+
+        accuracy                           1.00    123506
+       macro avg       0.34      0.38      0.36    123506
+    weighted avg       0.99      1.00      0.99    123506
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">roc_auc_score_multiclass</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s2">&quot;macro&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;roc_auc_score_multiclass function evaluate the multiclass output as a ROC AUC score.</span>
+<span class="sd">    </span>
+<span class="sd">    :param y_test: test label    </span>
+<span class="sd">    :param y_pred: test label    </span>
+<span class="sd">    :param average: &quot;macro&quot; or Label encoder    </span>
+<span class="sd">    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1">#creating a set of all the unique classes using the actual class list</span>
+    <span class="n">unique_class</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+    <span class="n">roc_auc_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">per_class</span> <span class="ow">in</span> <span class="n">unique_class</span><span class="p">:</span>
+        <span class="c1">#creating a list of all the classes except the current class </span>
+        <span class="n">other_class</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unique_class</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">per_class</span><span class="p">]</span>
+
+        <span class="c1">#marking the current class as 1 and all other classes as 0</span>
+        <span class="n">new_y_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">other_class</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_test</span><span class="p">]</span>
+        <span class="n">new_y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">other_class</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+
+        <span class="c1">#using the sklearn metrics method to calculate the roc_auc_score</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">new_y_test</span><span class="p">,</span> <span class="n">new_y_pred</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="n">average</span><span class="p">)</span>
+        <span class="n">roc_auc_dict</span><span class="p">[</span><span class="n">per_class</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc</span>
+
+    <span class="k">return</span> <span class="n">roc_auc_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="c1"># For Multiclass AUC</span>
+<span class="n">_auc_dict</span> <span class="o">=</span> <span class="n">roc_auc_score_multiclass</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">_auc_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">arr_outcomes</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_auc_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">_confusion_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----AUC Dictionary-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">))</span>
+
+<span class="n">metrix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;f1-score&#39;</span><span class="p">]</span>
+<span class="c1">#     metrix = [&#39;precision&#39;, &#39;recall&#39;, &#39;f1-score&#39;, &#39;support&#39;]</span>
+<span class="n">xKeys</span> <span class="o">=</span> <span class="n">arr_outcomes2</span>
+<span class="k">for</span> <span class="n">met</span> <span class="ow">in</span> <span class="n">metrix</span><span class="p">:</span>
+    <span class="n">xValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="n">arr_outcomes2</span><span class="p">:</span>
+        <span class="n">xValues</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_classification_report_dict</span><span class="p">[</span><span class="n">target_name</span><span class="p">][</span><span class="n">met</span><span class="p">]]</span>
+
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">met</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xValues</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xValues</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xKeys</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">xKeys</span><span class="p">))</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_auc_dict</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">_auc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
+
+[[  540     0     0     0     0     0     0     0     0     0     0     1
+      0     0     0     0     0     0     0     0     0]
+ [    4     0     0     0     0     1     0     0     0     0     0     1
+      0     0     0     0     5     0     0     0     0]
+ [    0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     1     0     0     0     0]
+ [    1     0     0     0     0     8     0     0     0     0     0     1
+      0     0     0     0     0     0     0     0     0]
+ [    1     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     2     0     0]
+ [    0     0     0     0     0   314     0     0     0     0     0     2
+      0     0     0     0     8     0     0     0     0]
+ [    0     0     0     0     0     5     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0]
+ [    0     0     0     0     0     1     0     0     0     0     0     0
+      0     0     1     0     0     0     0     0     0]
+ [    0     0     0     0     0     1     0     0     0     0     0     1
+      0     0     0     0     0     0     0     0     0]
+ [    0     0     0     0     0     0     0     0     0 26707     0     0
+      0     0     0     0     0     0     1     0     0]
+ [    2     0     0     0     0     8     0     0     0     0     0     0
+      0     0     0     0    42     0     0     0     0]
+ [   44     0     0     0     0     6     0     0     0     0     0 24210
+      0     0     0     0     6     0     1     0     0]
+ [    0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     2     0     0     0     0     0     0]
+ [    0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     9     0     0     0    37     0     0]
+ [    2     0     0     0     0     1     0     0     0     0     0     0
+      0     0   280     0     3     0     1     0     0]
+ [    1     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0     0     0     0]
+ [    5     0     0     0     0     4     0     0     0     0     0     5
+      0     0     0     0   374     0     0     0     0]
+ [    0     0     0     0     0     0     0     0     0    25     0     0
+      0     0     0     0     0 70310     1     0     0]
+ [    0     0     0     0     0     0     0     0     0     0     0     0
+      0     0     0     0     0     0   240     0     0]
+ [  238     0     0     0     0     0     0     0     0     0     0    34
+      0     0     1     0     1     0     0     0     0]
+ [    0     0     0     0     0     1     0     0     0     0     0     0
+      0     0     0     0     5     0     0     0     0]]
+
+-----Classification Report-----
+
+                  precision    recall  f1-score   support
+
+           back.       0.64      1.00      0.78       541
+buffer_overflow.       0.00      0.00      0.00        11
+      ftp_write.       0.00      0.00      0.00         1
+   guess_passwd.       0.00      0.00      0.00        10
+           imap.       0.00      0.00      0.00         3
+        ipsweep.       0.90      0.97      0.93       324
+           land.       0.00      0.00      0.00         5
+     loadmodule.       0.00      0.00      0.00         2
+       multihop.       0.00      0.00      0.00         2
+        neptune.       1.00      1.00      1.00     26708
+           nmap.       0.00      0.00      0.00        52
+         normal.       1.00      1.00      1.00     24267
+           perl.       0.00      0.00      0.00         2
+            phf.       0.00      0.00      0.00        46
+            pod.       0.96      0.98      0.97       287
+      portsweep.       0.00      0.00      0.00         1
+        rootkit.       0.84      0.96      0.90       388
+          satan.       1.00      1.00      1.00     70336
+          smurf.       0.85      1.00      0.92       240
+    warezclient.       0.00      0.00      0.00       274
+    warezmaster.       0.00      0.00      0.00         6
+
+        accuracy                           1.00    123506
+       macro avg       0.34      0.38      0.36    123506
+    weighted avg       0.99      1.00      0.99    123506
+
+
+-----AUC Dictionary-----
+
+{&#39;back.&#39;: 0.9978640586680926, &#39;buffer_overflow.&#39;: 0.5, &#39;ftp_write.&#39;: 0.5, &#39;guess_passwd.&#39;: 0.5, &#39;imap.&#39;: 0.5, &#39;ipsweep.&#39;: 0.9844217759889963, &#39;land.&#39;: 0.5, &#39;loadmodule.&#39;: 0.5, &#39;multihop.&#39;: 0.5, &#39;neptune.&#39;: 0.9998521441180415, &#39;nmap.&#39;: 0.5, &#39;normal.&#39;: 0.9985988402027475, &#39;perl.&#39;: 0.5, &#39;pod.&#39;: 0.5, &#39;portsweep.&#39;: 0.9877521264439144, &#39;rootkit.&#39;: 0.5, &#39;satan.&#39;: 0.9816704216204956, &#39;smurf.&#39;: 0.9998151728844404, &#39;teardrop.&#39;: 0.9998255804520306, &#39;warezclient.&#39;: 0.5, &#39;warezmaster.&#39;: 0.5}
+</pre></div>
+</div>
+<img alt="../../../_images/cnn_with_keras_13_1.png" src="../../../_images/cnn_with_keras_13_1.png" />
+<img alt="../../../_images/cnn_with_keras_13_2.png" src="../../../_images/cnn_with_keras_13_2.png" />
+<img alt="../../../_images/cnn_with_keras_13_3.png" src="../../../_images/cnn_with_keras_13_3.png" />
+<img alt="../../../_images/cnn_with_keras_13_4.png" src="../../../_images/cnn_with_keras_13_4.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./books\ml\anomaly_detection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="gmm_model.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Run Main Program</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Youngseok Joung<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"
+     crossorigin="anonymous"></script>
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

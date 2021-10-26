@@ -26,8 +26,9 @@ import cProfile
 import pstats
 import os
 import sys
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
 from sklearn.preprocessing import LabelEncoder
+from matplotlib import pyplot
 import pickle
 from joblib import dump, load
 
@@ -77,7 +78,7 @@ def Preprocessing(model_name, data):
 
 
 def train_and_test(model_name, x_train, x_test, y_train, y_test):
-    # Profile: Start 
+    # Profile: Start
     profile = cProfile.Profile()
     profile.enable()
     
@@ -95,63 +96,129 @@ def train_and_test(model_name, x_train, x_test, y_train, y_test):
     stats.print_stats()
     os.remove('output.prof')
     
-    # Estimation: Confusion Matrix & classification-report 
-    _confusion_matrix = confusion_matrix(y_test, y_pred)
-    _classification_report = classification_report(y_test, y_pred)
-    
-    with open('result/' + model_name + '/' + model_name + '_output.txt', 'w') as f:
-        f.write("\n---Confusion Matrix---\n")
-        f.write(np.array2string(_confusion_matrix, separator=', '))
-        f.write("\n---Classification Report---\n")
-        f.write(_classification_report)
+    # Freezing model for production
+    dump(model, 'result/' + model_name + '/' + model_name + '_model.joblib')
 
-    # Freezing model for production 
-    dump(model, 'result/' + model_name + '/' + model_name + '_model.joblib') 
-    
-    return _confusion_matrix, _classification_report
+    return model, y_pred
 
 
 # In[5]:
 
 
-model_name = 'cnb_kdd'
-# model_name = 'xgboost_nsl_kdd'
-dataset_name = 'kdd_prediction'
-# dataset_name = 'kdd_prediction_NSL'
+def report(model_name, y_test, y_pred, le=None):
+    """report function evaluates the quality of the output of a classifier on this data set.
+    We can get the value of Precision, Recall,, F1-Score, Support, accuracy by Lables
+    And it can get Multiclass AUC score multiclass using roc_auc_score_multiclass function
+    Additionally, it draws Bar graph about comparison between labels in each metrics (precision, recall, f1-score, AUC)
+    All are saved as a file
 
-data = pd.read_csv('./dataset/' + dataset_name + '.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
-print(data.head)
+    :param model_name: model name used in this project (e.g. "SVM")
+    :param y_test: test label
+    :param y_pred: test label
+    :param le: None or Label encoder
+    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
+    """
+
+    # Estimation: Confusion Matrix & classification-report
+    _confusion_matrix = confusion_matrix(y_test, y_pred)
+    _classification_report = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=False)
+    _classification_report_dict = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=True)
+
+    # For Multiclass AUC
+    _auc_dict = roc_auc_score_multiclass(y_test, y_pred)
+    _auc_dict = dict((le.classes_[key], value) for (key, value) in _auc_dict.items())
+#     _auc = roc_auc_score(y_test, y_pred, multi_class='ovr')
+#     _fpr, _tpr, _thresholds = roc_curve(y_test, y_pred)
+
+    with open('result/' + model_name + '/' + model_name + '_output.txt', 'w') as f:
+        f.write("\n---Confusion Matrix---\n")
+        f.write(np.array2string(_confusion_matrix, separator=', '))
+        f.write("\n---Classification Report---\n")
+        f.write(_classification_report)
+        f.write("\n---ROC AUC Score---\n")
+        f.write(str(_auc_dict))
+#         f.write(_auc)
+
+    print('\n-----Confusion Matrix-----\n')
+    print(_confusion_matrix)
+    print('\n-----Classification Report-----\n')
+    print(_classification_report)
+    print('\n-----AUC Dictionary-----\n')
+    print(str(_auc_dict))
+
+    metrix = ['precision', 'recall', 'f1-score']
+#     metrix = ['precision', 'recall', 'f1-score', 'support']
+    xKeys = le.classes_
+    for met in metrix:
+        xValues = []
+        for target_name in le.classes_:
+            xValues += [_classification_report_dict[target_name][met]]
+
+        pyplot.title(met)
+        pyplot.bar(range(len(xValues)), list(xValues), align='center')
+        pyplot.xticks(range(len(xKeys)), list(xKeys))
+        pyplot.show()
+
+    pyplot.title('AUC')
+    pyplot.bar(range(len(_auc_dict)), list(_auc_dict.values()), align='center')
+    pyplot.xticks(range(len(_auc_dict)), list(_auc_dict.keys()))
+    pyplot.show()
+
+#     # plot the roc curve for the model
+#     # pyplot.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
+#     pyplot.plot(_fpr, _tpr, marker='.', label=model_name)
+#     # axis labels
+#     pyplot.xlabel('False Positive Rate')
+#     pyplot.ylabel('True Positive Rate')
+#     # show the legend
+#     pyplot.legend()
+#     # show the plot
+#     pyplot.show()
+
+    return _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
 
 
 # In[6]:
 
 
-# labeling
-data, _ = labelEncoding(model_name, data)
+def roc_auc_score_multiclass(y_test, y_pred, average = "macro"):
+    """roc_auc_score_multiclass function evaluate the multiclass output as a ROC AUC score.
+
+    :param y_test: test label
+    :param y_pred: test label
+    :param average: "macro" or Label encoder
+    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict
+    """
+
+    #creating a set of all the unique classes using the actual class list
+    unique_class = set(y_test)
+    roc_auc_dict = {}
+    for per_class in unique_class:
+        #creating a list of all the classes except the current class
+        other_class = [x for x in unique_class if x != per_class]
+
+        #marking the current class as 1 and all other classes as 0
+        new_y_test = [0 if x in other_class else 1 for x in y_test]
+        new_y_pred = [0 if x in other_class else 1 for x in y_pred]
+
+        #using the sklearn metrics method to calculate the roc_auc_score
+        roc_auc = roc_auc_score(new_y_test, new_y_pred, average = average)
+        roc_auc_dict[per_class] = roc_auc
+
+    return roc_auc_dict
 
 
 # In[7]:
 
 
-# Preprocessing
-x_train, x_test, y_train, y_test = Preprocessing(model_name, data)
-
-
-# In[8]:
-
-
-# Train and Test
-cm, cr = train_and_test(model_name, x_train, x_test, y_train, y_test)
-print('\n-----Confusion Matrix-----\n')
-print(cm)
-print('\n-----Classification Report-----\n')
-print(cr)
-
-
-# In[9]:
-
-
 def production(model_name, data):
+    """production function receive real network traffic data from the product
+    And classify it with saved label encoder and the model
+
+    :param model_name: model name
+    :param data: real dataset
+    :return: pred_label, real_label
+    """
     real_data, le = labelEncoding(model_name, data)
     real_y = real_data.result
     real_x = real_data.drop('result', axis=1)
@@ -166,10 +233,58 @@ def production(model_name, data):
     return pred_label, real_label
 
 
+# # Run main program
+
+# In[8]:
+
+
+if __name__ == "__main__":
+
+    """Receive Input datasets"""
+    model_name = 'svm_kdd'
+    # model_name = 'svm_nsl_kdd'
+    dataset_name = 'kdd_prediction'
+    # dataset_name = 'kdd_prediction_NSL'
+
+    data = pd.read_csv('./dataset/' + dataset_name + '.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
+#     print(data.head)
+
+
+# In[9]:
+
+
+"""Label Encoding for categorical datasets"""
+data, le = labelEncoding(model_name, data)
+
+
 # In[10]:
 
 
-# Production
+"""Pre-processing"""
+x_train, x_test, y_train, y_test = Preprocessing(model_name, data)
+
+
+# In[11]:
+
+
+"""Train and Test"""
+model, y_pred = train_and_test(model_name, x_train, x_test, y_train, y_test)
+
+
+# In[ ]:
+
+
+"""Report"""
+cm, cr, auc, _ = report(model_name, y_test, y_pred, le)
+
+
+# # Test in Product
+
+# In[ ]:
+
+
+"""Production"""
+
 real_data = pd.read_csv('./dataset/kdd_prediction.csv', delimiter=',', dtype={'protocol_type': str, 'service': str, 'flag': str, 'result': str})
 real_data = real_data.head(1)
 

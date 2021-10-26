@@ -170,6 +170,21 @@ commentsRunWhenDOMLoaded(addUtterances);
      XGBoost
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gnb_model.html">
+     Gaussian naive bayes classifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmm_model.html">
+     Run Main Program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cnn_with_keras.html">
+     Analyzing a Dataset
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -412,75 +427,161 @@ c</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_14244/1690920269.py in &lt;module&gt;
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="s2">&quot;dst_host_rerror_rate&quot;</span><span class="p">,</span><span class="s2">&quot;dst_host_srv_rerror_rate&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> 
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            duration     src_bytes     dst_bytes           land  \
+count  494021.000000  4.940210e+05  4.940210e+05  494021.000000   
+mean       47.979302  3.025610e+03  8.685324e+02       0.000045   
+std       707.746472  9.882181e+05  3.304000e+04       0.006673   
+min         0.000000  0.000000e+00  0.000000e+00       0.000000   
+25%         0.000000  4.500000e+01  0.000000e+00       0.000000   
+50%         0.000000  5.200000e+02  0.000000e+00       0.000000   
+75%         0.000000  1.032000e+03  0.000000e+00       0.000000   
+max     58329.000000  6.933756e+08  5.155468e+06       1.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\util\_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span> 
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
+       wrong_fragment         urgent            hot  num_failed_logins  \
+count   494021.000000  494021.000000  494021.000000      494021.000000   
+mean         0.006433       0.000014       0.034519           0.000152   
+std          0.134805       0.005510       0.782103           0.015520   
+min          0.000000       0.000000       0.000000           0.000000   
+25%          0.000000       0.000000       0.000000           0.000000   
+50%          0.000000       0.000000       0.000000           0.000000   
+75%          0.000000       0.000000       0.000000           0.000000   
+max          3.000000       3.000000      30.000000           5.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> 
-<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> 
-<span class="g g-Whitespace">    </span><span class="mi">588</span> 
+           logged_in  num_compromised  ...  dst_host_count  \
+count  494021.000000    494021.000000  ...   494021.000000   
+mean        0.148247         0.010212  ...      232.470778   
+std         0.355345         1.798326  ...       64.745380   
+min         0.000000         0.000000  ...        0.000000   
+25%         0.000000         0.000000  ...      255.000000   
+50%         0.000000         0.000000  ...      255.000000   
+75%         0.000000         0.000000  ...      255.000000   
+max         1.000000       884.000000  ...      255.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span> 
-<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span> 
-<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+       dst_host_srv_count  dst_host_same_srv_rate  dst_host_diff_srv_rate  \
+count       494021.000000           494021.000000           494021.000000   
+mean           188.665670                0.753780                0.030906   
+std            106.040437                0.410781                0.109259   
+min              0.000000                0.000000                0.000000   
+25%             46.000000                0.410000                0.000000   
+50%            255.000000                1.000000                0.000000   
+75%            255.000000                1.000000                0.040000   
+max            255.000000                1.000000                1.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> 
-<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">812</span> 
-<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       dst_host_same_src_port_rate  dst_host_srv_diff_host_rate  \
+count                494021.000000                494021.000000   
+mean                      0.601935                     0.006684   
+std                       0.481309                     0.042133   
+min                       0.000000                     0.000000   
+25%                       0.000000                     0.000000   
+50%                       1.000000                     0.000000   
+75%                       1.000000                     0.000000   
+max                       1.000000                     1.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       dst_host_serror_rate  dst_host_srv_serror_rate  dst_host_rerror_rate  \
+count         494021.000000             494021.000000         494021.000000   
+mean               0.176754                  0.176443              0.058118   
+std                0.380593                  0.380919              0.230590   
+min                0.000000                  0.000000              0.000000   
+25%                0.000000                  0.000000              0.000000   
+50%                0.000000                  0.000000              0.000000   
+75%                0.000000                  0.000000              0.000000   
+max                1.000000                  1.000000              1.000000   
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> 
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> 
+       dst_host_srv_rerror_rate  
+count             494021.000000  
+mean                   0.057412  
+std                    0.230140  
+min                    0.000000  
+25%                    0.000000  
+50%                    0.000000  
+75%                    0.000000  
+max                    1.000000  
 
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\parsers\base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHandles</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">222</span><span class="s2">         self.handles = get_handle(</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">             src,</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">             &quot;r&quot;,</span>
-
-<span class="nn">~\.conda\envs\mybook\lib\site-packages\pandas\io\common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">         if ioargs.encoding and &quot;b&quot; not in ioargs.mode:</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2">             # Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">702</span><span class="s2">             handle = open(</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">                 handle,</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 ioargs.mode,</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./dataset/kddcup.data_10_percent_corrected&#39;
+[8 rows x 38 columns]
+(494021, 42)
+smurf.              280790
+neptune.            107201
+normal.              97278
+back.                 2203
+satan.                1589
+ipsweep.              1247
+portsweep.            1040
+warezclient.          1020
+teardrop.              979
+pod.                   264
+nmap.                  231
+guess_passwd.           53
+buffer_overflow.        30
+land.                   21
+warezmaster.            20
+imap.                   12
+rootkit.                10
+loadmodule.              9
+ftp_write.               8
+multihop.                7
+phf.                     4
+perl.                    3
+spy.                     2
+Name: label, dtype: int64
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>principal component 1</th>
+      <th>principal component 2</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.560535</td>
+      <td>1.428887</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.561570</td>
+      <td>1.404598</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.541429</td>
+      <td>1.380522</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.514420</td>
+      <td>1.354874</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.488805</td>
+      <td>1.329313</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

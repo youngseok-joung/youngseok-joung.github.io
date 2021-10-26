@@ -105,7 +105,7 @@ principalDf = pd.DataFrame(data = rescaleX, columns = ['principal component 1', 
 principalDf.head()
 
 
-# In[6]:
+# In[2]:
 
 
 principalDf.label.value_counts()

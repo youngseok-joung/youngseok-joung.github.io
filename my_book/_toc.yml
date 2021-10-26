@@ -17,8 +17,10 @@ parts:
         - file: books/ml/anomaly_detection/svm_model
         - file: books/ml/anomaly_detection/randomforest_model
         - file: books/ml/anomaly_detection/xgboost_model
-        - file: books/ml/anomaly_detection/cnb_model
-        - file: books/ml/anomaly_detection/keras_model
+        - file: books/ml/anomaly_detection/all_version
+        - file: books/ml/anomaly_detection/gnb_model
+        - file: books/ml/anomaly_detection/gmm_model
+        - file: books/ml/anomaly_detection/cnn_with_keras
 
   - caption: Robotics
     chapters:
