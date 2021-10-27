@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -644,30 +649,30 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1454    0   23    0    0]
- [   0 2275    1    2    0]
- [  24    4  126    0    0]
- [   0    3    0  107    4]
- [   0    1    0    0   12]]
+[[1419    0   24    0    0]
+ [   1 2306    0    4    3]
+ [  32    2  120    2    0]
+ [   0    2    0  108    2]
+ [   0    2    1    0    8]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.98      0.98      0.98      1477
-      normal       1.00      1.00      1.00      2278
-       probe       0.84      0.82      0.83       154
-         r2l       0.98      0.94      0.96       114
-         u2r       0.75      0.92      0.83        13
+         dos       0.98      0.98      0.98      1443
+      normal       1.00      1.00      1.00      2314
+       probe       0.83      0.77      0.80       156
+         r2l       0.95      0.96      0.96       112
+         u2r       0.62      0.73      0.67        11
 
     accuracy                           0.98      4036
-   macro avg       0.91      0.93      0.92      4036
+   macro avg       0.87      0.89      0.88      4036
 weighted avg       0.98      0.98      0.98      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.9875246154200277, &#39;normal&#39;: 0.9970662148003208, &#39;probe&#39;: 0.9059997189827175, &#39;r2l&#39;: 0.9690432736609499, &#39;u2r&#39;: 0.9610413201017228}
+{&#39;dos&#39;: 0.9853207059146126, &#39;normal&#39;: 0.9965292312510728, &#39;probe&#39;: 0.8813937351308485, &#39;r2l&#39;: 0.9813783311489735, &#39;u2r&#39;: 0.8630152456239413}
 </pre></div>
 </div>
 <img alt="../../../_images/randomforest_model_13_1.png" src="../../../_images/randomforest_model_13_1.png" />

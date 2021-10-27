@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -550,25 +555,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[  75    0 1409    8    3]
- [1534  490  209   21    5]
- [   1    0  157    1    0]
- [   3    0    7   94    3]
- [   0    2    2    1   11]]
+[[  67    3 1431   24    0]
+ [  13 1955  224   15    9]
+ [   0    0  147    1    0]
+ [   0    3    7  118    3]
+ [   0    6    0    2    8]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-           0       0.05      0.05      0.05      1495
-           1       1.00      0.22      0.36      2259
-           2       0.09      0.99      0.16       159
-           3       0.75      0.88      0.81       107
-           4       0.50      0.69      0.58        16
+           0       0.84      0.04      0.08      1525
+           1       0.99      0.88      0.93      2216
+           2       0.08      0.99      0.15       148
+           3       0.74      0.90      0.81       131
+           4       0.40      0.50      0.44        16
 
-    accuracy                           0.20      4036
-   macro avg       0.48      0.56      0.39      4036
-weighted avg       0.60      0.20      0.25      4036
+    accuracy                           0.57      4036
+   macro avg       0.61      0.66      0.48      4036
+weighted avg       0.89      0.57      0.58      4036
 </pre></div>
 </div>
 </div>
@@ -605,7 +610,9 @@ weighted avg       0.60      0.20      0.25      4036
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dos&#39;: 0, &#39;normal&#39;: 1, &#39;probe&#39;: 2, &#39;r2l&#39;: 3, &#39;u2r&#39;: 4}
-[&#39;dos&#39;] [&#39;normal&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;normal&#39;] [&#39;normal&#39;]
 </pre></div>
 </div>
 </div>

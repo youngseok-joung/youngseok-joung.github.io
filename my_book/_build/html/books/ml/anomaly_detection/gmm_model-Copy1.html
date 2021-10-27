@@ -169,13 +169,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -519,25 +524,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1518    0    0    0    0]
- [2249    0    0    0    0]
- [ 147    0    0    0    0]
- [ 103    0    0    0    0]
- [  19    0    0    0    0]]
+[[1469    0    0    0    0]
+ [2290    0    0    0    0]
+ [ 152    0    0    0    0]
+ [ 112    0    0    0    0]
+ [  13    0    0    0    0]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-           0       0.38      1.00      0.55      1518
-           1       0.00      0.00      0.00      2249
-           2       0.00      0.00      0.00       147
-           3       0.00      0.00      0.00       103
-           4       0.00      0.00      0.00        19
+           0       0.36      1.00      0.53      1469
+           1       0.00      0.00      0.00      2290
+           2       0.00      0.00      0.00       152
+           3       0.00      0.00      0.00       112
+           4       0.00      0.00      0.00        13
 
-    accuracy                           0.38      4036
-   macro avg       0.08      0.20      0.11      4036
-weighted avg       0.14      0.38      0.21      4036
+    accuracy                           0.36      4036
+   macro avg       0.07      0.20      0.11      4036
+weighted avg       0.13      0.36      0.19      4036
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.

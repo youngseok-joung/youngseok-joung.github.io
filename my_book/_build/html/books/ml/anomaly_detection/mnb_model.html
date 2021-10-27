@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -550,14 +555,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_45768/2709227883.py in &lt;module&gt;
+<span class="ne">C</span>:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_11668/2709227883.py in &lt;module&gt;
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Train and Test</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">train_and_test</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Confusion Matrix-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-----Classification Report-----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_45768/932345000.py</span> in <span class="ni">train_and_test</span><span class="nt">(model_name, x_train, x_test, y_train, y_test)</span>
+<span class="nn">C:\Users\RYANJO~1\AppData\Local\Temp/ipykernel_11668/932345000.py</span> in <span class="ni">train_and_test</span><span class="nt">(model_name, x_train, x_test, y_train, y_test)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># train and test</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>

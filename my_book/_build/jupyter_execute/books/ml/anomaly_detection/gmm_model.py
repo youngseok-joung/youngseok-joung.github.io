@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
-
-
+# # Gaussian Mixture Model
+# 
+# 
 
 # In[1]:
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Run Main Program &#8212; Space Nomads</title>
+    <title>Gaussian Mixture Model &#8212; Space Nomads</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -286,6 +291,24 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Gaussian Mixture Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-main-program">
+   Run Main Program
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -294,7 +317,9 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="gaussian-mixture-model">
+<h1>Gaussian Mixture Model<a class="headerlink" href="#gaussian-mixture-model" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;gmm_model.py: </span>
 
@@ -560,6 +585,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="run-main-program">
 <h1>Run Main Program<a class="headerlink" href="#run-main-program" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
@@ -617,30 +643,30 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[   1   81    0 1397    0]
- [1750  311    0  205   12]
- [   1   14    0  138    0]
- [  31    5    0    3   74]
- [   4    7    0    2    0]]
+[[   0   82    0    0 1398]
+ [1707  332   17    0  197]
+ [   0   17    0    0  148]
+ [  22    6   91    0    5]
+ [   3   11    0    0    0]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.00      0.00      0.00      1479
-      normal       0.74      0.14      0.23      2278
-       probe       0.00      0.00      0.00       153
-         r2l       0.00      0.03      0.00       113
-         u2r       0.00      0.00      0.00        13
+         dos       0.00      0.00      0.00      1480
+      normal       0.74      0.15      0.25      2253
+       probe       0.00      0.00      0.00       165
+         r2l       0.00      0.00      0.00       124
+         u2r       0.00      0.00      0.00        14
 
     accuracy                           0.08      4036
    macro avg       0.15      0.03      0.05      4036
-weighted avg       0.42      0.08      0.13      4036
+weighted avg       0.41      0.08      0.14      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.15110067869743612, &#39;normal&#39;: 0.5378293235688651, &#39;probe&#39;: 0.5, &#39;r2l&#39;: 0.2912503750290436, &#39;u2r&#39;: 0.4893114591101168}
+{&#39;dos&#39;: 0.16118935837245696, &#39;normal&#39;: 0.5411500936372243, &#39;probe&#39;: 0.48605011624903127, &#39;r2l&#39;: 0.5, &#39;u2r&#39;: 0.28269517652909004}
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\RyanJoung\.conda\envs\mybook\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.

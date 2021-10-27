@@ -85,7 +85,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="all_version.html" />
+    <link rel="next" title="Neural Network Model" href="all_version.html" />
     <link rel="prev" title="Randomforest" href="randomforest_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -636,30 +641,30 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[1497    0    5    0    0]
- [   1 2244    0    1    0]
- [  30    3  127    0    1]
- [   0    3    3  101    2]
- [   0    3    0    2   13]]
+[[1500    1   11    0    0]
+ [   1 2249    4    0    0]
+ [  30    3  108    0    0]
+ [   0    6    0  106    2]
+ [   0    0    1    1   13]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.98      1.00      0.99      1502
-      normal       1.00      1.00      1.00      2246
-       probe       0.94      0.79      0.86       161
-         r2l       0.97      0.93      0.95       109
-         u2r       0.81      0.72      0.76        18
+         dos       0.98      0.99      0.99      1512
+      normal       1.00      1.00      1.00      2254
+       probe       0.87      0.77      0.82       141
+         r2l       0.99      0.93      0.96       114
+         u2r       0.87      0.87      0.87        15
 
     accuracy                           0.99      4036
-   macro avg       0.94      0.89      0.91      4036
-weighted avg       0.99      0.99      0.99      4036
+   macro avg       0.94      0.91      0.92      4036
+weighted avg       0.98      0.99      0.98      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.9922187412311079, &#39;normal&#39;: 0.9970407975444862, &#39;probe&#39;: 0.8933776798236828, &#39;r2l&#39;: 0.9629207813233717, &#39;u2r&#39;: 0.8607377910513799}
+{&#39;dos&#39;: 0.9898907000729504, &#39;normal&#39;: 0.9960850245529335, &#39;probe&#39;: 0.8809248081282606, &#39;r2l&#39;: 0.9647847947252118, &#39;u2r&#39;: 0.9330846389786952}
 </pre></div>
 </div>
 <img alt="../../../_images/xgboost_model_13_1.png" src="../../../_images/xgboost_model_13_1.png" />
@@ -730,7 +735,7 @@ weighted avg       0.99      0.99      0.99      4036
         <a class="right-next" href="all_version.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">&lt;no title&gt;</p>
+                <p class="prevnext-title">Neural Network Model</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

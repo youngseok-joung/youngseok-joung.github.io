@@ -87,8 +87,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Run Main Program" href="gmm_model.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="all_version.html" />
+    <link rel="next" title="Gaussian Mixture Model" href="gmm_model.html" />
+    <link rel="prev" title="Neural Network Model" href="all_version.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -172,6 +172,11 @@ commentsRunWhenDOMLoaded(addUtterances);
      XGBoost
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Gaussian naive bayes classifier
@@ -179,7 +184,7 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm_model.html">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -670,30 +675,30 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----Confusion Matrix-----
 
-[[  66    3 1417   10    2]
- [1572  416  235   15   12]
- [   2    0  141    1    0]
- [   0    2    7  118    3]
- [   0    2    2    1    9]]
+[[  74    3 1421   11    0]
+ [1583  165  205   30  256]
+ [   1    0  156    1    0]
+ [   0    2    2  107    2]
+ [   0    3    1    2   11]]
 
 -----Classification Report-----
 
               precision    recall  f1-score   support
 
-         dos       0.04      0.04      0.04      1498
-      normal       0.98      0.18      0.31      2250
-       probe       0.08      0.98      0.14       144
-         r2l       0.81      0.91      0.86       130
-         u2r       0.35      0.64      0.45        14
+         dos       0.04      0.05      0.05      1509
+      normal       0.95      0.07      0.14      2239
+       probe       0.09      0.99      0.16       158
+         r2l       0.71      0.95      0.81       113
+         u2r       0.04      0.65      0.08        17
 
-    accuracy                           0.19      4036
-   macro avg       0.45      0.55      0.36      4036
-weighted avg       0.59      0.19      0.22      4036
+    accuracy                           0.13      4036
+   macro avg       0.37      0.54      0.25      4036
+weighted avg       0.57      0.13      0.12      4036
 
 
 -----AUC Dictionary-----
 
-{&#39;dos&#39;: 0.21194269006955427, &#39;normal&#39;: 0.5904847579942765, &#39;probe&#39;: 0.7761968996231585, &#39;r2l&#39;: 0.9503899326479971, &#39;u2r&#39;: 0.8193151949989343}
+{&#39;dos&#39;: 0.21110443263122752, &#39;normal&#39;: 0.5346208745010231, &#39;probe&#39;: 0.7836399422904929, &#39;r2l&#39;: 0.9678433743365088, &#39;u2r&#39;: 0.7914318750640339}
 </pre></div>
 </div>
 <img alt="../../../_images/gnb_model_13_1.png" src="../../../_images/gnb_model_13_1.png" />
@@ -756,7 +761,7 @@ weighted avg       0.59      0.19      0.22      4036
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">&lt;no title&gt;</p>
+                <p class="prevnext-title">Neural Network Model</p>
             </div>
         </a>
     </div>
@@ -764,7 +769,7 @@ weighted avg       0.59      0.19      0.22      4036
         <a class="right-next" href="gmm_model.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Run Main Program</p>
+                <p class="prevnext-title">Gaussian Mixture Model</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
