@@ -1,0 +1,2004 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Space Nomads</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/youngseok-joung/youngseok-joung.github.io.git");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Gaussian naive bayes classifier" href="gnb_model.html" />
+    <link rel="prev" title="XGBoost" href="xgboost_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Space Nomads</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Welcome to Space Nomads
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Math
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../math/content.html">
+   Latex Math reference
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="content.html">
+   Anomaly Detection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm_model.html">
+     Support-vector machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforest_model.html">
+     Randomforest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xgboost_model.html">
+     XGBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gnb_model.html">
+     Gaussian naive bayes classifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmm_model.html">
+     Run Main Program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cnn_with_keras.html">
+     Analyzing a Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/books/ml/anomaly_detection/all_version.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/youngseokjoung/My Book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/youngseokjoung/My Book/issues/new?title=Issue%20on%20page%20%2Fbooks/ml/anomaly_detection/all_version.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/youngseokjoung/My Book/main?urlpath=tree/docs/books/ml/anomaly_detection/all_version.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2066</span><span class="o">/</span><span class="mf">2640875576.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset/1 - 20 Percent Training Set.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset/Test - KDDTest.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration</th>
+      <th>src_bytes</th>
+      <th>dst_bytes</th>
+      <th>land</th>
+      <th>wrong_fragment</th>
+      <th>urgent</th>
+      <th>hot</th>
+      <th>num_failed_logins</th>
+      <th>logged_in</th>
+      <th>num_compromised</th>
+      <th>...</th>
+      <th>dst_host_count</th>
+      <th>dst_host_srv_count</th>
+      <th>dst_host_same_srv_rate</th>
+      <th>dst_host_diff_srv_rate</th>
+      <th>dst_host_same_src_port_rate</th>
+      <th>dst_host_srv_diff_host_rate</th>
+      <th>dst_host_serror_rate</th>
+      <th>dst_host_srv_serror_rate</th>
+      <th>dst_host_rerror_rate</th>
+      <th>dst_host_srv_rerror_rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>25192.000000</td>
+      <td>2.519200e+04</td>
+      <td>2.519200e+04</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.00000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>...</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+      <td>25192.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>305.054104</td>
+      <td>2.433063e+04</td>
+      <td>3.491847e+03</td>
+      <td>0.000079</td>
+      <td>0.023738</td>
+      <td>0.00004</td>
+      <td>0.198039</td>
+      <td>0.001191</td>
+      <td>0.394768</td>
+      <td>0.227850</td>
+      <td>...</td>
+      <td>182.532074</td>
+      <td>115.063036</td>
+      <td>0.519791</td>
+      <td>0.082539</td>
+      <td>0.147453</td>
+      <td>0.031844</td>
+      <td>0.285800</td>
+      <td>0.279846</td>
+      <td>0.117800</td>
+      <td>0.118769</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2686.555640</td>
+      <td>2.410805e+06</td>
+      <td>8.883072e+04</td>
+      <td>0.008910</td>
+      <td>0.260221</td>
+      <td>0.00630</td>
+      <td>2.154202</td>
+      <td>0.045418</td>
+      <td>0.488811</td>
+      <td>10.417352</td>
+      <td>...</td>
+      <td>98.993895</td>
+      <td>110.646850</td>
+      <td>0.448944</td>
+      <td>0.187191</td>
+      <td>0.308367</td>
+      <td>0.110575</td>
+      <td>0.445316</td>
+      <td>0.446075</td>
+      <td>0.305869</td>
+      <td>0.317333</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>84.000000</td>
+      <td>10.000000</td>
+      <td>0.050000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>4.400000e+01</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>255.000000</td>
+      <td>61.000000</td>
+      <td>0.510000</td>
+      <td>0.030000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.000000</td>
+      <td>2.790000e+02</td>
+      <td>5.302500e+02</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>255.000000</td>
+      <td>255.000000</td>
+      <td>1.000000</td>
+      <td>0.070000</td>
+      <td>0.060000</td>
+      <td>0.020000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>42862.000000</td>
+      <td>3.817091e+08</td>
+      <td>5.151385e+06</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.00000</td>
+      <td>77.000000</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>884.000000</td>
+      <td>...</td>
+      <td>255.000000</td>
+      <td>255.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 38 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration</th>
+      <th>protocol_type</th>
+      <th>service</th>
+      <th>flag</th>
+      <th>src_bytes</th>
+      <th>dst_bytes</th>
+      <th>land</th>
+      <th>wrong_fragment</th>
+      <th>urgent</th>
+      <th>hot</th>
+      <th>...</th>
+      <th>dst_host_srv_count</th>
+      <th>dst_host_same_srv_rate</th>
+      <th>dst_host_diff_srv_rate</th>
+      <th>dst_host_same_src_port_rate</th>
+      <th>dst_host_srv_diff_host_rate</th>
+      <th>dst_host_serror_rate</th>
+      <th>dst_host_srv_serror_rate</th>
+      <th>dst_host_rerror_rate</th>
+      <th>dst_host_srv_rerror_rate</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>ftp_data</td>
+      <td>SF</td>
+      <td>491</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>25</td>
+      <td>0.17</td>
+      <td>0.03</td>
+      <td>0.17</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>udp</td>
+      <td>other</td>
+      <td>SF</td>
+      <td>146</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>0.60</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>private</td>
+      <td>S0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>26</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>neptune</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>http</td>
+      <td>SF</td>
+      <td>232</td>
+      <td>8153</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>255</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>tcp</td>
+      <td>http</td>
+      <td>SF</td>
+      <td>199</td>
+      <td>420</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>255</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>normal</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 42 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2 values make no contextual sense</span>
+<span class="n">train</span><span class="o">.</span><span class="n">su_attempted</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">su_attempted</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;target distribution Training set:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;target distribution Test set:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>target distribution Training set:
+normal             13449
+neptune             8282
+ipsweep              710
+satan                691
+portsweep            587
+smurf                529
+nmap                 301
+back                 196
+teardrop             188
+warezclient          181
+pod                   38
+guess_passwd          10
+warezmaster            7
+buffer_overflow        6
+imap                   5
+rootkit                4
+multihop               2
+phf                    2
+ftp_write              1
+land                   1
+spy                    1
+loadmodule             1
+Name: target, dtype: int64
+target distribution Test set:
+normal             9710
+neptune            4657
+guess_passwd       1231
+mscan               996
+warezmaster         944
+apache2             737
+satan               735
+processtable        685
+smurf               665
+back                359
+snmpguess           331
+saint               319
+mailbomb            293
+snmpgetattack       178
+portsweep           157
+ipsweep             141
+httptunnel          133
+nmap                 73
+pod                  41
+buffer_overflow      20
+multihop             18
+named                17
+ps                   15
+sendmail             14
+rootkit              13
+xterm                13
+teardrop             12
+xlock                 9
+land                  7
+xsnoop                4
+ftp_write             3
+udpstorm              2
+phf                   2
+worm                  2
+loadmodule            2
+perl                  2
+sqlattack             2
+imap                  1
+Name: target, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>One-Hot Encoding</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ONE-HOT ENCODING OF CATEGORICAL VARIABLES</span>
+<span class="n">train_target</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="n">test_target</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;target&quot;</span> <span class="p">,</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training Features shape: &#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing Features shape: &#39;</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Features shape:  (25192, 118)
+Testing Features shape:  (22543, 115)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#aligning train and test sets to have same features</span>
+<span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_target</span>
+<span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_target</span>
+
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training Features shape: &#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing Features shape: &#39;</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Features shape:  (25192, 116)
+Testing Features shape:  (22543, 116)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take target column</span>
+<span class="n">targetdf</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="n">targetdf_test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="c1"># change the target column</span>
+<span class="n">newtargetdf</span><span class="o">=</span><span class="n">targetdf</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span> <span class="s1">&#39;normal&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;neptune&#39;</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">,</span><span class="s1">&#39;back&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;land&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pod&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;smurf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;teardrop&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;mailbomb&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;apache2&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;processtable&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;udpstorm&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;worm&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="s1">&#39;ipsweep&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;nmap&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;portsweep&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;satan&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;mscan&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;saint&#39;</span> <span class="p">:</span> <span class="mi">2</span>
+                           <span class="p">,</span><span class="s1">&#39;ftp_write&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;guess_passwd&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;imap&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;multihop&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;phf&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;spy&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;warezclient&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;warezmaster&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;sendmail&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;named&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;snmpgetattack&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;snmpguess&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;xlock&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;xsnoop&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;httptunnel&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                           <span class="s1">&#39;buffer_overflow&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;loadmodule&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;perl&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;rootkit&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;ps&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;sqlattack&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;xterm&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="n">newtargetdf_test</span><span class="o">=</span><span class="n">targetdf_test</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span> <span class="s1">&#39;normal&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;neptune&#39;</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">,</span><span class="s1">&#39;back&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;land&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pod&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;smurf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;teardrop&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;mailbomb&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;apache2&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;processtable&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;udpstorm&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;worm&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="s1">&#39;ipsweep&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;nmap&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;portsweep&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;satan&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;mscan&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;saint&#39;</span> <span class="p">:</span> <span class="mi">2</span>
+                           <span class="p">,</span><span class="s1">&#39;ftp_write&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;guess_passwd&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;imap&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;multihop&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;phf&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;spy&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;warezclient&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;warezmaster&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;sendmail&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;named&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;snmpgetattack&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;snmpguess&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;xlock&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;xsnoop&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;httptunnel&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                           <span class="s1">&#39;buffer_overflow&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;loadmodule&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;perl&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;rootkit&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;ps&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;sqlattack&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s1">&#39;xterm&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="c1"># put the new target column back</span>
+<span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newtargetdf</span>
+<span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newtargetdf_test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    0
+2    1
+3    0
+4    0
+Name: target, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">to_drop_DoS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">to_drop_Probe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">to_drop_R2L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">to_drop_U2R</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">to_drop_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">DoS_df</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="o">~</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_DoS</span><span class="p">)];</span>
+<span class="n">Probe_df</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="o">~</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_Probe</span><span class="p">)];</span>
+<span class="n">R2L_df</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="o">~</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_R2L</span><span class="p">)];</span>
+<span class="n">U2R_df</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="o">~</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_U2R</span><span class="p">)];</span>
+
+<span class="c1">#test</span>
+<span class="n">DoS_df_test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="o">~</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_DoS</span><span class="p">)];</span>
+<span class="n">Probe_df_test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="o">~</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_Probe</span><span class="p">)];</span>
+<span class="n">R2L_df_test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="o">~</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_R2L</span><span class="p">)];</span>
+<span class="n">U2R_df_test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="o">~</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">to_drop_U2R</span><span class="p">)];</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of DoS:&#39;</span> <span class="p">,</span><span class="n">DoS_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of Probe:&#39;</span> <span class="p">,</span><span class="n">Probe_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of R2L:&#39;</span> <span class="p">,</span><span class="n">R2L_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of U2R:&#39;</span> <span class="p">,</span><span class="n">U2R_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of DoS:&#39;</span> <span class="p">,</span><span class="n">DoS_df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of Probe:&#39;</span> <span class="p">,</span><span class="n">Probe_df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of R2L:&#39;</span> <span class="p">,</span><span class="n">R2L_df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions of U2R:&#39;</span> <span class="p">,</span><span class="n">U2R_df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train:
+Dimensions of DoS: (22683, 116)
+Dimensions of Probe: (15738, 116)
+Dimensions of R2L: (13658, 116)
+Dimensions of U2R: (13460, 116)
+Test:
+Dimensions of DoS: (17170, 116)
+Dimensions of Probe: (12131, 116)
+Dimensions of R2L: (12595, 116)
+Dimensions of U2R: (9777, 116)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finding Correlations for Feature Engineering</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find correlations with the target and sort</span>
+<span class="n">DoS_correlations</span> <span class="o">=</span> <span class="n">DoS_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="c1"># Display correlations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Most Positive Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">DoS_correlations</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Most Negative Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">DoS_correlations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Positive Correlations:
+ service_private             0.458233
+dst_host_count              0.495105
+count                       0.700821
+serror_rate                 0.782802
+dst_host_serror_rate        0.783616
+srv_serror_rate             0.783661
+dst_host_srv_serror_rate    0.788777
+flag_S0                     0.789142
+target                      1.000000
+urgent                           NaN
+num_outbound_cmds                NaN
+is_host_login                    NaN
+service_pm_dump                  NaN
+flag_RSTOS0                      NaN
+flag_SH                          NaN
+Name: target, dtype: float64
+
+Most Negative Correlations:
+ same_srv_rate                 -0.863724
+flag_SF                       -0.843535
+dst_host_same_srv_rate        -0.760395
+dst_host_srv_count            -0.717842
+logged_in                     -0.682754
+service_http                  -0.529998
+srv_diff_host_rate            -0.272376
+protocol_type_udp             -0.252122
+service_domain_u              -0.244516
+dst_host_srv_diff_host_rate   -0.218386
+service_smtp                  -0.197618
+dst_host_same_src_port_rate   -0.154620
+service_other                 -0.124905
+service_ftp_data              -0.102189
+duration                      -0.085876
+Name: target, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find correlations with the target and sort</span>
+<span class="n">Probe_correlations</span> <span class="o">=</span> <span class="n">Probe_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="c1"># Display correlations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Most Positive Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Probe_correlations</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Most Negative Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Probe_correlations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Positive Correlations:
+ dst_host_same_src_port_rate    0.554764
+target                         1.000000
+wrong_fragment                      NaN
+urgent                              NaN
+num_outbound_cmds                   NaN
+is_host_login                       NaN
+service_login                       NaN
+service_printer                     NaN
+service_tim_i                       NaN
+service_vmnet                       NaN
+Name: target, dtype: float64
+
+Most Negative Correlations:
+ logged_in                -0.506745
+dst_host_srv_count       -0.495078
+flag_SF                  -0.461905
+same_srv_rate            -0.396385
+service_http             -0.395928
+dst_host_same_srv_rate   -0.384406
+protocol_type_tcp        -0.239128
+service_domain_u         -0.147494
+service_smtp             -0.122582
+srv_count                -0.108015
+Name: target, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find correlations with the target and sort</span>
+<span class="n">U2R_correlations</span> <span class="o">=</span> <span class="n">U2R_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="c1"># Display correlations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Most Positive Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">U2R_correlations</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Most Negative Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">U2R_correlations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Positive Correlations:
+ service_sunrpc      NaN
+service_supdup      NaN
+service_systat      NaN
+service_tim_i       NaN
+service_uucp        NaN
+service_uucp_path   NaN
+service_vmnet       NaN
+service_whois       NaN
+flag_RSTOS0         NaN
+flag_SH             NaN
+Name: target, dtype: float64
+
+Most Negative Correlations:
+ dst_host_srv_count       -0.055180
+service_http             -0.032393
+dst_host_count           -0.021833
+srv_diff_host_rate       -0.013336
+srv_count                -0.012574
+service_domain_u         -0.011298
+count                    -0.011251
+service_smtp             -0.009705
+dst_host_diff_srv_rate   -0.007830
+dst_host_same_srv_rate   -0.007043
+Name: target, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find correlations with the target and sort</span>
+<span class="n">R2L_correlations</span> <span class="o">=</span> <span class="n">R2L_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="c1"># Display correlations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Most Positive Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">R2L_correlations</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Most Negative Correlations:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">R2L_correlations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most Positive Correlations:
+ service_ssh         NaN
+service_sunrpc      NaN
+service_supdup      NaN
+service_systat      NaN
+service_tim_i       NaN
+service_uucp        NaN
+service_uucp_path   NaN
+service_vmnet       NaN
+service_whois       NaN
+flag_RSTOS0         NaN
+Name: target, dtype: float64
+
+Most Negative Correlations:
+ dst_host_srv_count   -0.189645
+service_http         -0.136525
+dst_host_count       -0.079184
+protocol_type_udp    -0.059108
+srv_count            -0.050763
+count                -0.048972
+service_domain_u     -0.048833
+srv_diff_host_rate   -0.045662
+service_smtp         -0.041961
+flag_REJ             -0.024677
+Name: target, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polynomial_terms_maker</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+    <span class="n">poly_features_head</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">dict</span><span class="p">(</span><span class="n">corr</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">))]</span>
+    <span class="n">poly_features_tail</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">dict</span><span class="p">(</span><span class="n">corr</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">))]</span>
+    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly_features_head</span><span class="o">+</span><span class="p">(</span><span class="n">poly_features_tail</span><span class="p">)</span>
+    <span class="n">poly_features_test</span><span class="o">=</span><span class="n">b</span><span class="p">[</span><span class="n">poly_features</span><span class="p">]</span>
+    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">poly_features</span><span class="p">]</span>    
+    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly_features</span>
+    <span class="k">if</span> <span class="s2">&quot;target&quot;</span> <span class="ow">in</span> <span class="n">poly_features</span><span class="p">:</span>
+        <span class="n">poly_features_test</span> <span class="o">=</span> <span class="n">poly_features_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>   
+        <span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly_features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>    
+    <span class="n">poly_names</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">poly_features</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">poly_target</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+    <span class="n">poly_target_test</span> <span class="o">=</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+                                  
+    <span class="c1"># Create the polynomial object with specified degree</span>
+    <span class="n">poly_transformer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Train the polynomial features </span>
+    <span class="n">poly_transformer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly_features</span><span class="p">)</span>
+
+    <span class="c1"># Transform the features</span>
+    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">poly_features</span><span class="p">)</span>
+    <span class="n">poly_features_test</span> <span class="o">=</span> <span class="n">poly_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">poly_features_test</span><span class="p">)</span>
+    <span class="c1">#print(&#39;Polynomial Features shape: &#39;, poly_features.shape)</span>
+
+    <span class="n">poly_transformer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">input_features</span> <span class="o">=</span> <span class="n">poly_names</span><span class="p">)</span>
+    
+    <span class="c1"># Create a dataframe of the features </span>
+    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> 
+                             <span class="n">columns</span> <span class="o">=</span> <span class="n">poly_transformer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">poly_names</span><span class="p">))</span>
+    <span class="c1"># Put test features into dataframe</span>
+    <span class="n">poly_features_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">poly_features_test</span><span class="p">,</span> 
+                                  <span class="n">columns</span> <span class="o">=</span> <span class="n">poly_transformer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">poly_names</span><span class="p">))</span>
+    <span class="c1"># Add in the target</span>
+    <span class="n">poly_features</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">poly_target</span>
+
+    <span class="n">a</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">b</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="c1"># Merge polynomial features into training dataframe</span>
+    <span class="n">poly_features</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;index_col&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Merge polnomial features into testing dataframe</span>
+    <span class="n">poly_features_test</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;index_col&#39;</span><span class="p">]</span>
+    <span class="n">test_poly</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">poly_features_test</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;index_col&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    
+    
+
+    <span class="c1"># Align the dataframes</span>
+    <span class="n">poly</span><span class="p">,</span> <span class="n">test_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">test_poly</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    
+        
+    <span class="c1">#Drop NaN columns</span>
+    <span class="n">poly</span><span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">)</span>
+    <span class="n">test_poly</span><span class="o">=</span> <span class="n">test_poly</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">poly</span><span class="p">,</span><span class="n">test_poly</span><span class="p">,</span><span class="n">poly_target</span><span class="p">,</span><span class="n">poly_target_test</span>
+    <span class="c1"># Print out the new shapes</span>
+    <span class="c1">#print(&#39;Training data with polynomial features shape: &#39;, DoS_df.shape)</span>
+    <span class="c1">#print(&#39;Testing data with polynomial features shape:  &#39;, DoS_df_test.shape)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">polynomial_terms_maker</span><span class="p">(</span><span class="n">DoS_df</span><span class="p">,</span><span class="n">DoS_df_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-15-766317168f58&gt;:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  a[&#39;index_col&#39;] = a.index
+&lt;ipython-input-15-766317168f58&gt;:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  b[&#39;index_col&#39;] = b.index
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(       duration_x  src_bytes  dst_bytes  land  wrong_fragment  urgent_x  hot  \
+0               0        491          0     0               0         0    0   
+1               0        146          0     0               0         0    0   
+2               0          0          0     0               0         0    0   
+3               0        232       8153     0               0         0    0   
+4               0        199        420     0               0         0    0   
+...           ...        ...        ...   ...             ...       ...  ...   
+22678           0        339      14600     0               0         0    0   
+22679           0          0          0     0               0         0    0   
+22680           0          0          0     0               0         0    0   
+22681           0          0          0     0               0         0    0   
+22682           0          0          0     0               0         0    0   
+
+       num_failed_logins  logged_in_x  num_compromised  ...  flag_RSTO  \
+0                      0            0                0  ...          0   
+1                      0            0                0  ...          0   
+2                      0            0                0  ...          0   
+3                      0            1                0  ...          0   
+4                      0            1                0  ...          0   
+...                  ...          ...              ...  ...        ...   
+22678                  0            1                0  ...          0   
+22679                  0            0                0  ...          1   
+22680                  0            0                0  ...          0   
+22681                  0            0                0  ...          0   
+22682                  0            0                0  ...          0   
+
+       flag_RSTOS0_x  flag_RSTR  flag_S0_x  flag_S1  flag_S2  flag_S3  \
+0                  0          0          0        0        0        0   
+1                  0          0          0        0        0        0   
+2                  0          0          1        0        0        0   
+3                  0          0          0        0        0        0   
+4                  0          0          0        0        0        0   
+...              ...        ...        ...      ...      ...      ...   
+22678              0          0          0        1        0        0   
+22679              0          0          0        0        0        0   
+22680              0          0          0        0        0        0   
+22681              0          0          1        0        0        0   
+22682              0          0          1        0        0        0   
+
+       flag_SF_x  flag_SH_x  index_col  
+0              1          0          0  
+1              1          0          1  
+2              0          0          2  
+3              1          0          3  
+4              1          0          4  
+...          ...        ...        ...  
+22678          0          0      25186  
+22679          0          0      25187  
+22680          0          0      25189  
+22681          0          0      25190  
+22682          0          0      25191  
+
+[22683 rows x 116 columns],        duration_x  src_bytes  dst_bytes  land  wrong_fragment  urgent_x  hot  \
+0               0          0          0     0               0         0    0   
+1               0          0          0     0               0         0    0   
+2               2      12983          0     0               0         0    0   
+3               0        267      14515     0               0         0    0   
+4               0       1022        387     0               0         0    0   
+...           ...        ...        ...   ...             ...       ...  ...   
+17165           0       1032          0     0               0         0    0   
+17166           0        794        333     0               0         0    0   
+17167           0        317        938     0               0         0    0   
+17168           0      54540       8314     0               0         0    2   
+17169           0         42         42     0               0         0    0   
+
+       num_failed_logins  logged_in_x  num_compromised  ...  flag_RSTO  \
+0                      0            0                0  ...          0   
+1                      0            0                0  ...          0   
+2                      0            0                0  ...          0   
+3                      0            1                0  ...          0   
+4                      0            1                0  ...          0   
+...                  ...          ...              ...  ...        ...   
+17165                  0            0                0  ...          0   
+17166                  0            1                0  ...          0   
+17167                  0            1                0  ...          0   
+17168                  0            1                1  ...          0   
+17169                  0            0                0  ...          0   
+
+       flag_RSTOS0_x  flag_RSTR  flag_S0_x  flag_S1  flag_S2  flag_S3  \
+0                  0          0          0        0        0        0   
+1                  0          0          0        0        0        0   
+2                  0          0          0        0        0        0   
+3                  0          0          0        0        0        0   
+4                  0          0          0        0        0        0   
+...              ...        ...        ...      ...      ...      ...   
+17165              0          0          0        0        0        0   
+17166              0          0          0        0        0        0   
+17167              0          0          0        0        0        0   
+17168              0          0          0        0        0        0   
+17169              0          0          0        0        0        0   
+
+       flag_SF_x  flag_SH_x  index_col  
+0              0          0          0  
+1              0          0          1  
+2              1          0          2  
+3              1          0          5  
+4              1          0          6  
+...          ...        ...        ...  
+17165          1          0      22537  
+17166          1          0      22538  
+17167          1          0      22539  
+17168          1          0      22540  
+17169          1          0      22541  
+
+[17170 rows x 116 columns], 0        0
+1        0
+2        1
+3        0
+4        0
+        ..
+25186    0
+25187    1
+25189    1
+25190    1
+25191    1
+Name: target, Length: 22683, dtype: int64, 0        1
+1        1
+2        0
+5        0
+6        0
+        ..
+22537    1
+22538    0
+22539    0
+22540    1
+22541    0
+Name: target, Length: 17170, dtype: int64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split dataframes into X &amp; Y</span>
+<span class="c1"># assign X as a dataframe of feautures and Y as a series of outcome variables</span>
+<span class="n">X_DoS</span><span class="p">,</span> <span class="n">X_DoS_test</span><span class="p">,</span> <span class="n">Y_DoS</span><span class="p">,</span> <span class="n">Y_DoS_test</span><span class="o">=</span> <span class="n">polynomial_terms_maker</span><span class="p">(</span><span class="n">DoS_df</span><span class="p">,</span><span class="n">DoS_df_test</span><span class="p">)</span>
+<span class="n">X_Probe</span><span class="p">,</span><span class="n">X_Probe_test</span><span class="p">,</span><span class="n">Y_Probe</span><span class="p">,</span><span class="n">Y_Probe_test</span> <span class="o">=</span><span class="n">polynomial_terms_maker</span><span class="p">(</span><span class="n">Probe_df</span><span class="p">,</span><span class="n">Probe_df_test</span><span class="p">)</span>
+<span class="n">X_R2L</span><span class="p">,</span><span class="n">X_R2L_test</span><span class="p">,</span><span class="n">Y_R2L</span><span class="p">,</span><span class="n">Y_R2L_test</span> <span class="o">=</span><span class="n">polynomial_terms_maker</span><span class="p">(</span><span class="n">R2L_df</span><span class="p">,</span><span class="n">R2L_df_test</span><span class="p">)</span>
+<span class="n">X_U2R</span><span class="p">,</span><span class="n">X_U2R_test</span><span class="p">,</span><span class="n">Y_U2R</span><span class="p">,</span><span class="n">Y_U2R_test</span> <span class="o">=</span><span class="n">polynomial_terms_maker</span><span class="p">(</span><span class="n">U2R_df</span><span class="p">,</span><span class="n">U2R_df_test</span><span class="p">)</span>
+<span class="n">X_DoS</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-15-766317168f58&gt;:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  a[&#39;index_col&#39;] = a.index
+&lt;ipython-input-15-766317168f58&gt;:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  b[&#39;index_col&#39;] = b.index
+&lt;ipython-input-15-766317168f58&gt;:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  a[&#39;index_col&#39;] = a.index
+&lt;ipython-input-15-766317168f58&gt;:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  b[&#39;index_col&#39;] = b.index
+&lt;ipython-input-15-766317168f58&gt;:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  a[&#39;index_col&#39;] = a.index
+&lt;ipython-input-15-766317168f58&gt;:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  b[&#39;index_col&#39;] = b.index
+&lt;ipython-input-15-766317168f58&gt;:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  a[&#39;index_col&#39;] = a.index
+&lt;ipython-input-15-766317168f58&gt;:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  b[&#39;index_col&#39;] = b.index
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(22683, 116)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_R2L</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_DoS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13658, 116)
+(22683, 116)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colNames</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_DoS</span><span class="p">)</span>
+<span class="n">colNames_test</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_DoS_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colNames</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colNames_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>116
+116
+</pre></div>
+</div>
+</div>
+</div>
+<p>Scaling The Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">scaler1</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_DoS</span><span class="p">)</span>
+<span class="n">X_DoS</span><span class="o">=</span><span class="n">scaler1</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_DoS</span><span class="p">)</span> 
+<span class="n">scaler2</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_Probe</span><span class="p">)</span>
+<span class="n">X_Probe</span><span class="o">=</span><span class="n">scaler2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_Probe</span><span class="p">)</span> 
+<span class="n">scaler3</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_R2L</span><span class="p">)</span>
+<span class="n">X_R2L</span><span class="o">=</span><span class="n">scaler3</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_R2L</span><span class="p">)</span> 
+<span class="n">scaler4</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_U2R</span><span class="p">)</span>
+<span class="n">X_U2R</span><span class="o">=</span><span class="n">scaler4</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_U2R</span><span class="p">)</span> 
+<span class="c1"># test data</span>
+<span class="n">scaler5</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_DoS_test</span><span class="p">)</span>
+<span class="n">X_DoS_test</span><span class="o">=</span><span class="n">scaler5</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_DoS_test</span><span class="p">)</span> 
+<span class="n">scaler6</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_Probe_test</span><span class="p">)</span>
+<span class="n">X_Probe_test</span><span class="o">=</span><span class="n">scaler6</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_Probe_test</span><span class="p">)</span> 
+<span class="n">scaler7</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_R2L_test</span><span class="p">)</span>
+<span class="n">X_R2L_test</span><span class="o">=</span><span class="n">scaler7</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_R2L_test</span><span class="p">)</span> 
+<span class="n">scaler8</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_U2R_test</span><span class="p">)</span>
+<span class="n">X_U2R_test</span><span class="o">=</span><span class="n">scaler8</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_U2R_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_Probe</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1. 1. 1. 1. 0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 0. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 0. 1. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>RFE for Feature Selection</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFE</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">clf</span><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_DoS</span><span class="p">,</span> <span class="n">Y_DoS</span><span class="p">)</span>
+<span class="n">X_rfeDoS</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_DoS</span><span class="p">)</span>
+<span class="n">true</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span>
+<span class="n">rfecolindex_DoS</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">rfecolname_DoS</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colNames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rfecolindex_DoS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_Probe</span><span class="p">,</span> <span class="n">Y_Probe</span><span class="p">)</span>
+<span class="n">X_rfeProbe</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_Probe</span><span class="p">)</span>
+<span class="n">true</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span>
+<span class="n">rfecolindex_Probe</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">rfecolname_Probe</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colNames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rfecolindex_Probe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_R2L</span><span class="p">,</span> <span class="n">Y_R2L</span><span class="p">)</span>
+<span class="n">X_rfeR2L</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_R2L</span><span class="p">)</span>
+<span class="n">true</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span>
+<span class="n">rfecolindex_R2L</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">rfecolname_R2L</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colNames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rfecolindex_R2L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_U2R</span><span class="p">,</span> <span class="n">Y_U2R</span><span class="p">)</span>
+<span class="n">X_rfeU2R</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_U2R</span><span class="p">)</span>
+<span class="n">true</span><span class="o">=</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span>
+<span class="n">rfecolindex_U2R</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">rfecolname_U2R</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colNames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rfecolindex_U2R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Features selected for DoS:&#39;</span><span class="p">,</span><span class="n">rfecolname_DoS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Features selected for Probe:&#39;</span><span class="p">,</span><span class="n">rfecolname_Probe</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Features selected for R2L:&#39;</span><span class="p">,</span><span class="n">rfecolname_R2L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Features selected for U2R:&#39;</span><span class="p">,</span><span class="n">rfecolname_U2R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Features selected for DoS: [&#39;src_bytes&#39;, &#39;dst_bytes&#39;, &#39;wrong_fragment&#39;, &#39;count_x&#39;, &#39;srv_count&#39;, &#39;serror_rate_x&#39;, &#39;same_srv_rate_x&#39;, &#39;diff_srv_rate&#39;, &#39;dst_host_same_srv_rate_x&#39;, &#39;dst_host_serror_rate_x&#39;, &#39;dst_host_srv_serror_rate_x&#39;, &#39;protocol_type_icmp&#39;, &#39;service_ecr_i&#39;, &#39;flag_S0_x&#39;, &#39;flag_SF_x&#39;]
+Features selected for Probe: [&#39;src_bytes&#39;, &#39;dst_bytes&#39;, &#39;dst_host_count_x&#39;, &#39;dst_host_srv_count_x&#39;, &#39;dst_host_same_srv_rate_x&#39;, &#39;dst_host_diff_srv_rate&#39;, &#39;dst_host_same_src_port_rate_x&#39;, &#39;dst_host_srv_diff_host_rate_x&#39;, &#39;dst_host_rerror_rate&#39;, &#39;dst_host_srv_rerror_rate&#39;, &#39;protocol_type_icmp&#39;, &#39;protocol_type_tcp&#39;, &#39;service_eco_i&#39;, &#39;service_http_x&#39;, &#39;service_private_x&#39;]
+Features selected for R2L: [&#39;duration_x&#39;, &#39;src_bytes&#39;, &#39;dst_bytes&#39;, &#39;hot&#39;, &#39;logged_in_x&#39;, &#39;is_guest_login&#39;, &#39;srv_count&#39;, &#39;dst_host_count_x&#39;, &#39;dst_host_srv_count_x&#39;, &#39;dst_host_same_srv_rate_x&#39;, &#39;dst_host_diff_srv_rate&#39;, &#39;dst_host_same_src_port_rate_x&#39;, &#39;dst_host_srv_diff_host_rate_x&#39;, &#39;service_ftp&#39;, &#39;service_ftp_data_x&#39;]
+Features selected for U2R: [&#39;duration_x&#39;, &#39;src_bytes&#39;, &#39;dst_bytes&#39;, &#39;urgent_x&#39;, &#39;hot&#39;, &#39;num_compromised&#39;, &#39;root_shell&#39;, &#39;num_root&#39;, &#39;dst_host_count_x&#39;, &#39;dst_host_srv_count_x&#39;, &#39;dst_host_same_srv_rate_x&#39;, &#39;dst_host_diff_srv_rate&#39;, &#39;dst_host_same_src_port_rate_x&#39;, &#39;service_ftp_data_x&#39;, &#39;index_col&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_rfeDoS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_rfeProbe</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_rfeR2L</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_rfeU2R</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(22683, 15)
+(15738, 15)
+(13658, 15)
+(13460, 15)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reduce test dataset to 15 features, use only features described in rfecolname_DoS etc.</span>
+<span class="n">X_DoS_test2</span><span class="o">=</span><span class="n">X_DoS_test</span><span class="p">[:,</span><span class="n">rfecolindex_DoS</span><span class="p">]</span>
+<span class="n">X_Probe_test2</span><span class="o">=</span><span class="n">X_Probe_test</span><span class="p">[:,</span><span class="n">rfecolindex_Probe</span><span class="p">]</span>
+<span class="n">X_R2L_test2</span><span class="o">=</span><span class="n">X_R2L_test</span><span class="p">[:,</span><span class="n">rfecolindex_R2L</span><span class="p">]</span>
+<span class="n">X_U2R_test2</span><span class="o">=</span><span class="n">X_U2R_test</span><span class="p">[:,</span><span class="n">rfecolindex_U2R</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_DoS_test2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_Probe_test2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17170, 15)
+(12131, 15)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algorithms after RFE</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span><span class="p">,</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">CategoricalNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">BernoulliNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+<span class="n">clfs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;gnb&#39;</span><span class="p">:</span> <span class="n">GaussianNB</span><span class="p">(),</span>
+    <span class="s1">&#39;gmm&#39;</span><span class="p">:</span> <span class="n">GaussianMixture</span><span class="p">(),</span>
+<span class="c1">#Not     &#39;mnb&#39;: MultinomialNB(),</span>
+<span class="c1">#Not     &#39;cnb&#39;: CategoricalNB(),</span>
+<span class="c1">#    &#39;svm1&#39;: SVC(kernel=&#39;linear&#39;),</span>
+<span class="c1">#    &#39;svm2&#39;: SVC(kernel=&#39;rbf&#39;),</span>
+<span class="c1">#     &#39;svm3&#39;: SVC(kernel=&#39;sigmoid&#39;),</span>
+<span class="c1">#     &#39;mlp1&#39;: MLPClassifier(),</span>
+<span class="c1">#     &#39;mlp2&#39;: MLPClassifier(hidden_layer_sizes=[100, 100]),</span>
+<span class="c1">#    &#39;ada&#39;: AdaBoostClassifier(),</span>
+<span class="c1">#     &#39;dtc&#39;: DecisionTreeClassifier(),</span>
+<span class="c1">#     &#39;rfc&#39;: RandomForestClassifier(),</span>
+<span class="c1">#     &#39;gbc&#39;: GradientBoostingClassifier(),</span>
+<span class="c1">#     &#39;lr&#39;: LogisticRegression()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;report function evaluates the quality of the output of a classifier on this data set.</span>
+<span class="sd">    We can get the value of Precision, Recall,, F1-Score, Support, accuracy by Lables </span>
+<span class="sd">    And it can get Multiclass AUC score multiclass using roc_auc_score_multiclass function</span>
+<span class="sd">    Additionally, it draws Bar graph about comparison between labels in each metrics (precision, recall, f1-score, AUC)</span>
+<span class="sd">    All are saved as a file</span>
+<span class="sd">    </span>
+<span class="sd">    :param model_name: model name used in this project (e.g. &quot;SVM&quot;)</span>
+<span class="sd">    :param y_test: test label    </span>
+<span class="sd">    :param y_pred: test label    </span>
+<span class="sd">    :param le: None or Label encoder    </span>
+<span class="sd">    :return: _confusion_matrix, _classification_report, _auc_dict, _classification_report_dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Estimation: Confusion Matrix &amp; classification-report </span>
+    <span class="n">_confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">_classification_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#     print(_confusion_matrix)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">_classification_report</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_confusion_matrix</span><span class="p">,</span> <span class="n">_classification_report</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">clf_name</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clf_name</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">clfs</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_rfeDoS</span><span class="p">,</span> <span class="n">Y_DoS</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_DoS_test2</span><span class="p">)</span>
+    <span class="n">f1_scores</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_DoS_test</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">clf_name</span><span class="p">,</span> <span class="n">Y_DoS_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gnb
+              precision    recall  f1-score   support
+
+           0       1.00      0.00      0.00      9710
+           1       0.43      1.00      0.61      7460
+
+    accuracy                           0.44     17170
+   macro avg       0.72      0.50      0.30     17170
+weighted avg       0.75      0.44      0.26     17170
+
+gmm
+              precision    recall  f1-score   support
+
+           0       0.57      1.00      0.72      9710
+           1       0.00      0.00      0.00      7460
+
+    accuracy                           0.57     17170
+   macro avg       0.28      0.50      0.36     17170
+weighted avg       0.32      0.57      0.41     17170
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gnb&#39;: 0.6056700899372908, &#39;gmm&#39;: 0.722470238095238}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">:</span>
+    <span class="n">accuracy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">clfs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_DoS_test2</span><span class="p">,</span> <span class="n">Y_DoS_test</span><span class="p">)</span>
+<span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gnb&#39;: 0.43500291205591146, &#39;gmm&#39;: -18.650192257025846}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">clf_name</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clf_name</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">clfs</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_rfeProbe</span><span class="p">,</span> <span class="n">Y_Probe</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_Probe_test2</span><span class="p">)</span>
+    <span class="n">f1_scores</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_Probe_test</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">clf_name</span><span class="p">,</span> <span class="n">Y_Probe_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gnb
+              precision    recall  f1-score   support
+
+           0       0.93      0.90      0.91      9710
+           2       0.63      0.71      0.67      2421
+
+    accuracy                           0.86     12131
+   macro avg       0.78      0.80      0.79     12131
+weighted avg       0.87      0.86      0.86     12131
+
+gmm
+              precision    recall  f1-score   support
+
+           0       0.80      1.00      0.89      9710
+           2       0.00      0.00      0.00      2421
+
+    accuracy                           0.80     12131
+   macro avg       0.40      0.50      0.44     12131
+weighted avg       0.64      0.80      0.71     12131
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gnb&#39;: 0.857209187542834, &#39;gmm&#39;: 0.8891534270408864}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">clf_name</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clf_name</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">clfs</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_rfeR2L</span><span class="p">,</span> <span class="n">Y_R2L</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_R2L_test2</span><span class="p">)</span>
+    <span class="n">f1_scores</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_R2L_test</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">clf_name</span><span class="p">,</span> <span class="n">Y_R2L_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gnb
+              precision    recall  f1-score   support
+
+           0       0.82      0.99      0.90      9710
+           3       0.88      0.28      0.42      2885
+
+    accuracy                           0.83     12595
+   macro avg       0.85      0.63      0.66     12595
+weighted avg       0.83      0.83      0.79     12595
+
+gmm
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87      9710
+           3       0.00      0.00      0.00      2885
+
+    accuracy                           0.77     12595
+   macro avg       0.39      0.50      0.44     12595
+weighted avg       0.59      0.77      0.67     12595
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gnb&#39;: 0.8627485258705142, &#39;gmm&#39;: 0.8706568034073079}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">clf_name</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clf_name</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">clfs</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_rfeU2R</span><span class="p">,</span> <span class="n">Y_U2R</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_U2R_test2</span><span class="p">)</span>
+    <span class="n">f1_scores</span><span class="p">[</span><span class="n">clf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_U2R_test</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">report</span><span class="p">(</span><span class="n">clf_name</span><span class="p">,</span> <span class="n">Y_U2R_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gnb
+              precision    recall  f1-score   support
+
+           0       1.00      0.00      0.00      9710
+           4       0.01      1.00      0.01        67
+
+    accuracy                           0.01      9777
+   macro avg       0.50      0.50      0.01      9777
+weighted avg       0.99      0.01      0.00      9777
+
+gmm
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00      9710
+           4       0.00      0.00      0.00        67
+
+    accuracy                           0.99      9777
+   macro avg       0.50      0.50      0.50      9777
+weighted avg       0.99      0.99      0.99      9777
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\ProgramData\Anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1245: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gnb&#39;: 0.013612651717352148, &#39;gmm&#39;: 0.9965618104377277}
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./books/ml/anomaly_detection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="xgboost_model.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">XGBoost</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="gnb_model.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Gaussian naive bayes classifier</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Youngseok Joung<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533435389071415"
+     crossorigin="anonymous"></script>
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

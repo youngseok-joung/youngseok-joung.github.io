@@ -1,0 +1,15 @@
+https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/
+https://www.analyticsvidhya.com/blog/2021/06/understand-the-dbscan-clustering-algorithm/
+https://medium.com/@tarammullin/dbscan-2788cfce9389
+https://machinelearningmastery.com/naive-bayes-for-machine-learning/
+https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/
+https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/
+https://machinelearningmastery.com/bayes-theorem-for-machine-learning/
+https://machinelearningmastery.com/better-naive-bayes/
+https://m.blog.naver.com/ilovalaska/50177014310
+https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/
+https://towardsdatascience.com/categorical-encoding-using-label-encoding-and-one-hot-encoder-911ef77fb5bd
+https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47
+https://towardsdatascience.com/generative-classification-algorithms-from-scratch-d6bf0a81dcf7
+https://datascienceschool.net/02%20mathematics/01.02%20%EC%88%98%EC%97%B4%EA%B3%BC%20%EC%A7%91%ED%95%A9%EC%9D%98%20%ED%95%A9%EA%B3%BC%20%EA%B3%B1.html
