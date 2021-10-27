@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Run Main Program &#8212; Space Nomads</title>
+    <title>Gaussian Mixture Model &#8212; Space Nomads</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -171,13 +171,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="all_version.html">
+     Neural Network Model
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="gnb_model.html">
      Gaussian naive bayes classifier
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Run Main Program
+     Gaussian Mixture Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -286,6 +291,24 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Gaussian Mixture Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-main-program">
+   Run Main Program
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -294,7 +317,9 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="gaussian-mixture-model">
+<h1>Gaussian Mixture Model<a class="headerlink" href="#gaussian-mixture-model" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;gmm_model.py: </span>
 
@@ -329,7 +354,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2141</span><span class="o">/</span><span class="mf">2719775099.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2146</span><span class="o">/</span><span class="mf">2719775099.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> 
 <span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -571,6 +596,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 
     <span class="k">return</span> <span class="n">pred_label</span><span class="p">,</span> <span class="n">real_label</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
